@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+	    "location_code": { "value": "ew1" },
+		"opco_code": { "value": "aim" },
+		"project_code": { "value": "maia" },
+		"app_code": { "value": "wso" },
+		"env_code": { "value": "dev" },
+		"location_name": { "value": "West Europe" },
+
+		"rev_number": { "value": "1.0.0.1" },
+		"dcs_code": { "value": "FIN" },
+		"client_billingCode": { "value": "XXXXX" },
+		"project_billingCode": { "value": "XXXXX" },
+		"start_time": { "value": "0 8 ***" },
+		"stop_time": { "value": "0 19 ***" },
+		"launch_time": { "value": "1453739311" },
+		"time_to_live": { "value": "15000" },	
+    }
+}

@@ -1,0 +1,232 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+	    "location_code": { 
+            "type": "String"			
+		},
+		"opco_code": { 
+            "type": "String"			
+		},
+		"project_code": { 
+			"type": "String"
+		},
+		"app_code": { 
+            "type": "String"
+		},
+		"env_code": { 
+            "type": "String"
+		},
+		
+		"rev_number": { 
+            "type": "String"
+		},
+		"dcs_code": { 
+            "type": "String"
+		},
+		"client_billingCode": { 
+            "type": "String"
+		},
+		"project_billingCode": { 
+            "type": "String"
+		},
+		"start_time": { 
+            "type": "String"
+		},
+		"stop_time": { 
+            "type": "String"
+		},
+		"launch_time": { 
+            "type": "String"
+		},
+		"time_to_live": { 
+            "type": "String"
+		},
+		"location_name": { 
+            "type": "String"
+		},		
+        "config_web_name": {
+            "defaultValue": "web",
+            "type": "String"
+        }
+    },
+    "variables": 
+	{
+	    "tag_project": "[parameters('opco_code')]",
+		"tag_app": "[parameters('app_code')]",
+		"tag_env": "[parameters('env_code')]",
+		"tag_billing": "[concat(parameters('client_billingCode'),':',parameters('project_billingCode'))]",
+		"tag_scheduling": "[concat(parameters('start_time'),':',parameters('stop_time'))]",
+		"tag_lifecycle": "[concat(parameters('launch_time'),':',parameters('time_to_live'))]",
+		"vnet_name": "[concat('z-' , parameters('opco_code') , '-' , parameters('project_code') , '-' , parameters('app_code') , '-' , parameters('env_code') , '-' ,  parameters('location_code') , '-vnet')]",
+		"snet1_name": "[concat('z-' , parameters('opco_code') , '-' , parameters('project_code') , '-' , parameters('app_code') , '-' , parameters('env_code') , '-' ,  parameters('location_code') , '-snet1')]",
+		"sto_name": "[concat('z' , parameters('opco_code') , parameters('project_code') , parameters('app_code') , parameters('env_code') ,  parameters('location_code') , 'sto')]",
+		"plan_name": "[concat('z-' , parameters('opco_code') , '-' , parameters('project_code') , '-' , parameters('app_code') , '-' , parameters('env_code') , '-' ,  parameters('location_code') , '-plan')]",
+		"web_name": "[concat('z-' , parameters('opco_code') , '-' , parameters('project_code') , '-' , parameters('app_code') , '-' , parameters('env_code') , '-' ,  parameters('location_code') , '-web')]",
+		"pip_name": "[concat('z-' , parameters('opco_code') , '-' , parameters('project_code') , '-' , parameters('app_code') , '-' , parameters('env_code') , '-' ,  parameters('location_code') , '-pip')]",
+		"gtwy_name": "[concat('z-' , parameters('opco_code') , '-' , parameters('project_code') , '-' , parameters('app_code') , '-' , parameters('env_code') , '-' ,  parameters('location_code') , '-gtwy')]"
+	},
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[variables('vnet_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "192.168.1.0/24"
+                    ]
+                },
+				"subnets": [
+					{
+					  "name": "[variables('snet1_name')]",
+					  "properties": {
+						"addressPrefix": "192.168.1.0/25",
+						"serviceEndpoints": [ { "service": "Microsoft.Storage" }, { "service": "Microsoft.Sql" } ]
+					  }
+					},
+					{
+					  "name": "GatewaySubnet",
+					  "properties": {
+						"addressPrefix": "192.168.1.128/28"
+					  }
+					}
+				],				
+                "virtualNetworkPeerings": []
+            }
+        },
+		{
+		  "name": "[variables('pip_name')]",
+		  "type": "Microsoft.Network/publicIPAddresses",
+		  "location": "[resourceGroup().location]",
+		  "apiVersion": "2015-06-15",
+		  "properties": {
+			"publicIPAllocationMethod": "Dynamic"
+		  }
+		},
+		{
+		  "name": "[variables('gtwy_name')]",
+		  "type": "Microsoft.Network/virtualNetworkGateways",
+		  "location": "[resourceGroup().location]",
+		  "apiVersion": "2015-06-15",
+		  "dependsOn": [
+			"[concat('Microsoft.Network/publicIPAddresses/', variables('pip_name'))]",
+			"[concat('Microsoft.Network/virtualNetworks/', variables('vnet_name'))]"
+		  ],
+		  "properties": {
+			"ipConfigurations": [
+			  {
+				"properties": {
+				  "privateIPAllocationMethod": "Dynamic",
+				  "subnet": {
+					"id": "[resourceId('Microsoft.Network/virtualNetworks/subnets',variables('vnet_name'),'GatewaySubnet')]"
+				  },
+				  "publicIPAddress": {
+					"id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('pip_name'))]"
+				  }
+				},
+				"name": "vnetGatewayConfig"
+			  }
+			],
+			"gatewayType": "Vpn",
+			"vpnType": "RouteBased",
+			"enableBgp": false,
+			"vpnClientConfiguration": {
+			  "vpnClientAddressPool": {
+				"addressPrefixes": [
+				  "172.16.201.0/24"
+				]
+			  }
+			}
+		  }
+		},		
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_RAGRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[variables('sto_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "[resourceGroup().location]",
+            "tags": {},
+            "properties": {
+				"networkAcls": {
+				  "bypass": "None",
+				  "virtualNetworkRules": [
+					{
+					  "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnet_name'), variables('snet1_name'))]",
+					  "action": "Allow"
+					}
+				  ],
+				  "defaultAction": "Deny"
+				}
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Network/virtualNetworks/', variables('vnet_name'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "size": "S1",
+                "family": "S",
+                "capacity": 1
+            },
+            "kind": "app",
+            "name": "[variables('plan_name')]",
+            "apiVersion": "2016-09-01",
+            "location": "[parameters('location_name')]",
+			"tags":{
+				"global:project": "[variables('tag_project')]",
+				"global:rev": "[parameters('rev_number')]",
+				"global:app": "[variables('tag_app')]",
+				"global:env": "[variables('tag_env')]",
+				"global:dcs": "[parameters('dcs_code')]",
+				"global:billing": "[variables('tag_billing')]",
+				"global:lifecycle": "[variables('tag_lifecycle')]"			
+			},
+            "properties": {
+                "name": "[variables('plan_name')]",
+				"workerSize": "1",
+				"numberOfWorkers": "1"
+            },
+            "dependsOn": []
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "kind": "app",
+            "name": "[variables('web_name')]",
+            "apiVersion": "2016-08-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+				"global:project": "[variables('tag_project')]",
+				"global:rev": "[parameters('rev_number')]",
+				"global:app": "[variables('tag_app')]",
+				"global:env": "[variables('tag_env')]",
+				"global:dcs": "[parameters('dcs_code')]",
+				"global:billing": "[variables('tag_billing')]",
+				"global:lifecycle": "[variables('tag_lifecycle')]"
+            },
+            "properties": {
+				"name": "[variables('web_name')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('plan_name'))]",
+				"siteConfig": {
+				  "AlwaysOn": true,
+				  "use32BitWorkerProcess": false,
+				  "phpVersion": "",
+				  "pythonVersion": "",
+				  "javaVersion": null
+				}
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('plan_name'))]",
+				"[concat('Microsoft.Network/virtualNetworks/', variables('vnet_name'))]"
+            ]
+        }
+	]
+}
