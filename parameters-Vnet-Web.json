@@ -4,7 +4,7 @@
     "parameters": {
 	    "location_code": { "value": "ew1" },
 		"opco_code": { "value": "aim" },
-		"project_code": { "value": "pmo2" },
+		"project_code": { "value": "pmo3" },
 		"app_code": { "value": "wso" },
 		"env_code": { "value": "dev" },
 		"location_name": { "value": "West Europe" },
