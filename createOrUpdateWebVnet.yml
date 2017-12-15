@@ -1,10 +1,14 @@
 - name: Create Azure WebApp with Vnet
-  hosts : localhost
+  hosts: localhost
   connection: local
   gather_facts: no
-  tasks :
-   - name : create storage account
-     azure_rm_storageaccount:
-      resource_group: TestAnsiblePMO01
-      name: ztestaccountpmo001
-      account_type: Standard_LRS
+  tasks:
+   - name: Run ARM template
+     azure_rm_deployment:
+      state: present
+      resource_group_name: z-aim-pmo2-wso-dev-ew1-rg
+      location: westeurope
+      tags:
+       from: ansible
+      template_link: "https://raw.githubusercontent.com/KikiGonzales/templateARM/master/template-Vnet-Web.json"
+      parameters_link: "https://raw.githubusercontent.com/KikiGonzales/templateARM/master/parameters-Vnet-Web.json"
