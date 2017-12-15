@@ -1,0 +1,11 @@
+# Create or update a template deployment based on uris using parameter and template links
+- name: Create Azure WebApp with Vnet
+  hosts : localhost
+  tasks :
+   - name : Run ARM template
+     azure_rm_deployment:
+      state: present
+      resource_group_name: z-aim-pmo2-wso-dev-ew1-rg
+      location: westeurope
+      template_link: 'https://raw.githubusercontent.com/KikiGonzales/templateARM/master/template-Vnet-Web.json'
+      parameters_link: 'https://raw.githubusercontent.com/KikiGonzales/templateARM/master/parameters-Vnet-Web.json'
