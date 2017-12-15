@@ -7,5 +7,5 @@
      azure_rm_deployment:
       state: present
       resource_group_name: tsf-ansible-poc-rg
-      template_link: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json'
-      parameters_link: 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.parameters.json'
+      template_link: "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.json"
+      parameters_link: "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vnet-two-subnets/azuredeploy.parameters.json"
