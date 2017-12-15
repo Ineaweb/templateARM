@@ -1,4 +1,3 @@
-# Create or update a template deployment based on uris using parameter and template links
 - name: Create Azure WebApp with Vnet
   hosts : localhost
   tasks :
