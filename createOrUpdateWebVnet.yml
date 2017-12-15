@@ -1,6 +1,7 @@
 - name: Create Azure WebApp with Vnet
   hosts : localhost
-  gather_facts: false
+  connection: local
+  gather_facts: no
   tasks :
    - name : Run ARM template
      azure_rm_deployment:
