@@ -8,7 +8,5 @@
       state: present
       resource_group_name: z-aim-pmo2-wso-dev-ew1-rg
       location: westeurope
-      template_link: "https://raw.githubusercontent.com/KikiGonzales/templateARM/master/template-Vnet-Web.json"
-      parameters_link: "https://raw.githubusercontent.com/KikiGonzales/templateARM/master/parameters-Vnet-Web.json"
       tags:
        from: ansible
