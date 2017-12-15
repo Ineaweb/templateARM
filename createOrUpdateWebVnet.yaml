@@ -9,3 +9,5 @@
       location: westeurope
       template_link: https://raw.githubusercontent.com/KikiGonzales/templateARM/master/template-Vnet-Web.json
       parameters_link: https://raw.githubusercontent.com/KikiGonzales/templateARM/master/parameters-Vnet-Web.json
+      tags:
+       from: ansible
