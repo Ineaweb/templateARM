@@ -428,7 +428,7 @@ class AzureInventory(object):
                 mac_address=None,
                 plan=webapp.server_farm_id,
                 virtual_machine_size=None,
-                computer_name=None,
+                computer_name=webapp.name,
                 provisioning_state=webapp.state,
             )
 
