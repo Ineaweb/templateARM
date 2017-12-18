@@ -4,5 +4,4 @@
   gather_facts: no
   tasks:
     - name: Run inventory
-      shell: tower-manage inventory_import --custom --source=azure_webapp_rm.py --inventory-name=z-aim-pmo3-inventory --overwrite
-      changed_when: False
+      shell: tower-manage inventory_import --custom --source=azure_webapp_rm.py --inventory-name=z-aim-pmo3-inventory --overwrite || true
