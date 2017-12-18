@@ -3,6 +3,6 @@
   connection: local
   gather_facts: no
   tasks:
-    - name: msg="Run inventory"
-      command: tower-manage inventory_import --custom --source=azure_webapp_rm.py --inventory-name={{ item }} --overwrite
+    - name: Run inventory
+      command: tower-manage inventory_import --custom --source=azure_webapp_rm.py --inventory-name=z-aim-pmo3-inventory --overwrite
       with_items: my_inventories
