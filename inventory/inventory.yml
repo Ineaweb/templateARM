@@ -1,6 +1,5 @@
 - name: The inventory script
   hosts: localhost
-  connection: local
   gather_facts: no
   tasks:
     - name: Run inventory
