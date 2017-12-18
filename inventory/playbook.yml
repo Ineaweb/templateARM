@@ -3,4 +3,4 @@
   connection: local
   gather_facts: no
   tasks:
-    - debug: msg="{{ inventory_hostname }} has powerstate {{ provisioning_state }}"
+    - debug: msg="{{ inventory_hostname }} found"
