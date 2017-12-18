@@ -275,7 +275,7 @@ class AzureRM(object):
                 self.azure_credentials,
                 self.subscription_id,
                 base_url=self._cloud_environment.endpoints.resource_manager,
-                api_version='2017-03-30'
+                api_version='2015-08-01'
             )
             self._register('Microsoft.Web/sites')
         return self._webapp_client
