@@ -1,8 +1,8 @@
 - name: The inventory script
-  hosts: all
+  hosts: localhost
   connection: local
   gather_facts: no
   tasks:
     - name: msg="Run inventory"
-      command: sudo tower-manage inventory_import --custom --source=azure_webapp_rm.py --inventory-name={{ item }} --overwrite
+      command: tower-manage inventory_import --custom --source=azure_webapp_rm.py --inventory-name={{ item }} --overwrite
       with_items: my_inventories
