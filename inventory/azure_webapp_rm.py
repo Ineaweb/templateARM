@@ -409,14 +409,14 @@ class AzureInventory(object):
                 self._get_security_groups(resource_group)
 
             host_vars = dict(
-                ansible_host=None,
+                ansible_host=webapp.name,
                 private_ip=None,
                 private_ip_alloc_method=None,
                 public_ip=None,
                 public_ip_name=None,
                 public_ip_id=None,
                 public_ip_alloc_method=None,
-                fqdn=None,
+                fqdn=webapp.name,
                 location=webapp.location,
                 name=webapp.name,
                 type=webapp.type,
