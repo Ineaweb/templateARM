@@ -236,8 +236,7 @@ class AzureRM(object):
             self._network_client = NetworkManagementClient(
                 self.azure_credentials,
                 self.subscription_id,
-                base_url=self._cloud_environment.endpoints.resource_manager,
-                api_version='2017-06-01'
+                base_url=self._cloud_environment.endpoints.resource_manager
             )
             self._register('Microsoft.Network')
         return self._network_client
