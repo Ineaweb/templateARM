@@ -4,6 +4,5 @@
   tasks:
     - name: Upgrade azure
       shell: pip -t install azure==2.0.0rc6 --upgrade || true
-  tasks:
     - name: Show azure version
       shell: pip show azure || true      
