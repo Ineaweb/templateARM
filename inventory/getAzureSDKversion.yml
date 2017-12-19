@@ -1,0 +1,8 @@
+- name: The upgrade azure script
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Upgrade azure
+      shell: pip install azure==2.0.0rc6 --ignore-installed || true
+    - name: Show azure version
+      shell: pip show azure || true      
