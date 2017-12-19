@@ -363,25 +363,33 @@ class AzureInventory(object):
             for resource_group in self.resource_groups:
                 try:
                     web_apps = self._webapp_client.web_apps.list_by_resource_group(resource_group)
+                    app_service_plans = self._webapp_client.app_service_plans.list_by_resource_group(resource_group)
                 except Exception as exc:
                     sys.exit("Error: fetching virtual machines for resource group {0} - {1}".format(resource_group, str(exc)))
                 if self._args.host or self.tags:
                     selected_webapps = self._selected_webapps(web_apps)
+                    selected_plans = self._selected_plans(app_service_plans)
                     self._load_webapps(selected_webapps)
+                    self._load_plans(selected_plans)
                 else:
                     self._load_webapps(web_apps)
+                    self._load_plans(app_service_plans)
         else:
             # get all VMs within the subscription
             try:
                 web_apps = self._webapp_client.web_apps.list()
+                app_service_plans = self._webapp_client.app_service_plans.list()
             except Exception as exc:
                 sys.exit("Error: fetching virtual machines - {0}".format(str(exc)))
 
             if self._args.host or self.tags or self.locations:
                 selected_webapps = self._selected_webapps(web_apps)
+                selected_plans = self._selected_plans(app_service_plans)
                 self._load_webapps(selected_webapps)
+                self._load_plans(selected_plans)
             else:
                 self._load_webapps(web_apps)
+                self._load_plans(app_service_plans)
 
     def _load_webapps(self, webapps):
         for webapp in webapps:
@@ -400,7 +408,7 @@ class AzureInventory(object):
                 public_ip_name=None,
                 public_ip_id=None,
                 public_ip_alloc_method=None,
-                fqdn=None,
+                fqdn=webapp.default_host_name,
                 location=webapp.location,
                 name=webapp.name,
                 type=webapp.type,
@@ -416,13 +424,58 @@ class AzureInventory(object):
                 provisioning_state=webapp.state,
             )
 
-            host_vars['os_disk'] = dict(
-                name=None,
-                operating_system_type=None
+            if self.include_powerstate:
+                host_vars['powerstate'] = webapp.enabled
+
+            host_vars['type'] = "web_app"        
+
+            self._add_host(host_vars)
+
+    def _load_plans(self, plans):
+        for plan in plans:
+            id_dict = azure_id_to_dict(plan.id)
+
+            resource_group = id_dict['resourceGroups'].lower()
+
+            if self.group_by_security_group:
+                self._get_security_groups(resource_group)
+
+            host_vars = dict(
+                ansible_host=None,
+                private_ip=None,
+                private_ip_alloc_method=None,
+                public_ip=None,
+                public_ip_name=None,
+                public_ip_id=None,
+                public_ip_alloc_method=None,
+                fqdn=None,
+                location=plan.location,
+                name=plan.name,
+                type=plan.type,
+                id=plan.id,
+                tags=plan.tags,
+                network_interface_id=None,
+                network_interface=None,
+                resource_group=resource_group,
+                mac_address=None,
+                plan=None,
+                virtual_machine_size=None,
+                computer_name=None,
+                provisioning_state=plan.provisioning_state
+            )
+
+            host_vars['sku'] = dict(
+                name=plan.sku.name,
+                tier=plan.sku.tier,
+                size=plan.sku.size,
+                family=plan.sku.family,
+                capacity=plan.sku.capacity
             )
 
             if self.include_powerstate:
-                host_vars['powerstate'] = webapp.enabled
+                host_vars['powerstate'] = True
+
+            host_vars['type'] = "app_service_plan"    
 
             self._add_host(host_vars)
 
@@ -436,6 +489,17 @@ class AzureInventory(object):
             if self.locations and webapp.location in self.locations:
                 selected_webapps.append(webapp)
         return selected_webapps
+
+    def _selected_plans(self, plans):
+        selected_plans = []
+        for plan in plans:
+            if self._args.host and self._args.host == plan.name:
+                selected_plans.append(plan)
+            if self.tags and self._tags_match(plan.tags, self.tags):
+                selected_plans.append(plan)
+            if self.locations and plan.location in self.locations:
+                selected_plans.append(plan)
+        return selected_plans        
 
     def _get_security_groups(self, resource_group):
         ''' For a given resource_group build a mapping of network_interface.id to security_group name '''
@@ -455,6 +519,7 @@ class AzureInventory(object):
 
         host_name = self._to_safe(vars['name'])
         resource_group = self._to_safe(vars['resource_group'])
+        type_info = self._to_safe(vars['type'])
         security_group = None
         if vars.get('security_group'):
             security_group = self._to_safe(vars['security_group'])
@@ -463,6 +528,10 @@ class AzureInventory(object):
             if not self._inventory.get(resource_group):
                 self._inventory[resource_group] = []
             self._inventory[resource_group].append(host_name)
+
+        if not self._inventory.get(type_info):
+            self._inventory[type_info] = []
+        self._inventory[type_info].append(host_name)    
 
         if self.group_by_location:
             if not self._inventory.get(vars['location']):
@@ -479,13 +548,9 @@ class AzureInventory(object):
 
         if self.group_by_tag and vars.get('tags'):
             for key, value in vars['tags'].items():
-                safe_key = self._to_safe(key)
-                safe_value = safe_key + '_' + self._to_safe(value)
-                if not self._inventory.get(safe_key):
-                    self._inventory[safe_key] = []
+                safe_value = self._to_safe(value)
                 if not self._inventory.get(safe_value):
                     self._inventory[safe_value] = []
-                self._inventory[safe_key].append(host_name)
                 self._inventory[safe_value].append(host_name)
 
     def _json_format_dict(self, pretty=False):
