@@ -4,14 +4,14 @@
   tasks:
    - name: create resource group
      azure_rm_resourcegroup:
-      name: "{{ hostvars.resource_group_name }}"
-      location: "{{ hostvars.location }}"
+      name: "{{ groups['resource_group_name'] }}"
+      location: "{{ groups['location'] }}"
       tags:
        from: ansible
    - name: create storage account
      azure_rm_storageaccount:
-      resource_group: "{{ hostvars.resource_group_name }}"
-      name: "{{ hostvars.storage_name }}"
-      account_type: "{{ hostvars.sku_name }}"
+      resource_group: "{{ groups['resource_group_name'] }}"
+      name: "{{ groups['storage_name'] }}"
+      account_type: "{{ groups['sku_name'] }}"
       tags:
        from: ansible
