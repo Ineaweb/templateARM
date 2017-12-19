@@ -3,4 +3,7 @@
   gather_facts: no
   tasks:
     - name: Upgrade azure
-      shell: pip install 'azure==2.0.0rc6' --upgrade || true
+      shell: pip -t install azure==2.0.0rc6 --upgrade || true
+  tasks:
+    - name: Show azure version
+      shell: pip show azure || true      
