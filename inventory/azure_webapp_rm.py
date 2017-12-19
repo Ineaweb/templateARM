@@ -253,20 +253,7 @@ class AzureRM(object):
                 api_version='2017-05-10'
             )
         return self._resource_client
-
-    #@property
-    # def compute_client(self):
-    #     self.log('Getting compute client')
-    #     if not self._compute_client:
-    #         self._compute_client = ComputeManagementClient(
-    #             self.azure_credentials,
-    #             self.subscription_id,
-    #             base_url=self._cloud_environment.endpoints.resource_manager,
-    #             api_version='2017-03-30'
-    #         )
-    #         self._register('Microsoft.Compute')
-    #     return self._compute_client
-
+        
     @property
     def webapp_client(self):
         self.log('Getting webapp client')
@@ -400,9 +387,6 @@ class AzureInventory(object):
         for webapp in webapps:
             id_dict = azure_id_to_dict(webapp.id)
 
-            # TODO - The API is returning an ID value containing resource group name in ALL CAPS. If/when it gets
-            #       fixed, we should remove the .lower(). Opened Issue
-            #       #574: https://github.com/Azure/azure-sdk-for-python/issues/574
             resource_group = id_dict['resourceGroups'].lower()
 
             if self.group_by_security_group:
@@ -466,17 +450,6 @@ class AzureInventory(object):
                             name=group.name,
                             id=group.id
                         )
-
-    # def _get_powerstate(self, resource_group, name):
-    #     try:
-    #         vm = self._compute_client.virtual_machines.get(resource_group,
-    #                                                        name,
-    #                                                        expand='instanceview')
-    #     except Exception as exc:
-    #         sys.exit("Error: fetching instanceview for host {0} - {1}".format(name, str(exc)))
-
-    #     return next((s.code.replace('PowerState/', '')
-    #                 for s in vm.instance_view.statuses if s.code.startswith('PowerState')), None)
 
     def _add_host(self, vars):
 
@@ -592,13 +565,6 @@ class AzureInventory(object):
         return settings
 
     def _tags_match(self, tag_obj, tag_args):
-        '''
-        Return True if the tags object from a VM contains the requested tag values.
-
-        :param tag_obj:  Dictionary of string:string pairs
-        :param tag_args: List of strings in the form key=value
-        :return: boolean
-        '''
 
         if not tag_obj:
             return False
@@ -631,6 +597,4 @@ def main():
 
     AzureInventory()
 
-
-if __name__ == '__main__':
-    main()
+main()
