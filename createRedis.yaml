@@ -1,0 +1,17 @@
+- name: Create storage account
+  hosts: localhost
+  gather_facts: false
+  tasks:
+   - name: create resource group
+     azure_rm_resourcegroup:
+      name: "{{ resource_group_name }}"
+      location: "{{ location }}"
+      tags:
+       from: ansible
+   - name: create storage account
+     azure_rm_storageaccount:
+      resource_group: "{{ resource_group_name }}"
+      name: "{{ storage_name }}"
+      account_type: "{{ sku_name }}"
+      tags:
+       from: ansible
