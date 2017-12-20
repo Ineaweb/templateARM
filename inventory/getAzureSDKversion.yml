@@ -2,7 +2,5 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Upgrade azure
-      shell: pip install azure=={{ version }} --ignore-installed || true
     - name: Show azure version
-      shell: pip show azure || true      
+      shell: pip freeze || true      
