@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-# Python
 import argparse
 import json
 import os
@@ -24,6 +23,7 @@ HAS_AZURE = True
 HAS_AZURE_EXC = None
 
 try:
+    from pip.operations import freeze
     from msrestazure.azure_exceptions import CloudError
     from msrestazure import azure_cloud
     from azure.mgmt.compute import __version__ as azure_compute_version
@@ -31,8 +31,8 @@ try:
     from azure.common.credentials import ServicePrincipalCredentials, UserPassCredentials
     from azure.mgmt.network import NetworkManagementClient
     from azure.mgmt.resource.resources import ResourceManagementClient
+    from azure.mgmt.redis import RedisManagementClient
     from azure.mgmt.compute import ComputeManagementClient
-    from azure.mgmt.web import WebSiteManagementClient
 except ImportError as exc:
     HAS_AZURE_EXC = exc
     HAS_AZURE = False
@@ -78,8 +78,8 @@ class AzureRM(object):
     def __init__(self, args):
         self._args = args
         self._cloud_environment = None
-        ##self._compute_client = None
-        self._webapp_client = None
+        self._compute_client = None
+        self._redis_client = None
         self._resource_client = None
         self._network_client = None
 
@@ -248,22 +248,33 @@ class AzureRM(object):
             self._resource_client = ResourceManagementClient(
                 self.azure_credentials,
                 self.subscription_id,
-                base_url=self._cloud_environment.endpoints.resource_manager,
-                api_version='2017-05-10'
+                base_url=self._cloud_environment.endpoints.resource_manager
             )
         return self._resource_client
-        
+
     @property
-    def webapp_client(self):
-        self.log('Getting webapp client')
-        if not self._webapp_client:
-            self._webapp_client = WebSiteManagementClient(
+    def compute_client(self):
+        self.log('Getting compute client')
+        if not self._compute_client:
+	    self._compute_client = ComputeManagementClient(
                 self.azure_credentials,
                 self.subscription_id,
                 base_url=self._cloud_environment.endpoints.resource_manager
             )
-            self._register('Microsoft.Web/sites')
-        return self._webapp_client
+            self._register('Microsoft.Compute')
+        return self._compute_client
+
+    @property
+    def redis_client(self):
+        self.log('Getting redis client')
+        if not self._redis_client:
+	    self._redis_client = RedisManagementClient(
+                self.azure_credentials,
+                self.subscription_id,
+                base_url=self._cloud_environment.endpoints.resource_manager
+			)
+            self._register('Microsoft.Redis')
+        return self._redis_client
 
 
 class AzureInventory(object):
@@ -277,8 +288,8 @@ class AzureInventory(object):
         except Exception as e:
             sys.exit("{0}".format(str(e)))
 
-        self._webapp_client = rm.webapp_client
-        # self._compute_client = rm.compute_client
+        self._compute_client = rm.compute_client
+        self._redis_client = rm.redis_client
         self._network_client = rm.network_client
         self._resource_client = rm.rm_client
         self._security_groups = None
@@ -314,7 +325,8 @@ class AzureInventory(object):
         if self._args.no_powerstate:
             self.include_powerstate = False
 
-        self.get_inventory()
+        #self.get_inventory()
+        self.get_redis_inventory()
         print(self._json_format_dict(pretty=self._args.pretty))
         sys.exit(0)
 
@@ -356,84 +368,91 @@ class AzureInventory(object):
                             help='Do not include the power state of each virtual host')
         return parser.parse_args()
 
+    def get_redis_inventory(self):
+        if len(self.resource_groups) > 0:
+            # get redis for requested resource groups
+            for resource_group in self.resource_groups:
+                try:
+                    redis_caches = self._redis_client.redis.list_by_resource_group(resource_group)
+                except Exception as exc:
+                    sys.exit("Error: fetching redis caches for resource group {0} - {1}".format(resource_group, str(exc)))
+                if self._args.host or self.tags:
+                    selected_redis_cache = self._selected_redis_caches(redis_caches)
+                    self._load_redis_caches(selected_redis_cache)
+                else:
+                    self._load_redis_caches(redis_caches)
+        else:
+            # get all redis within the subscription
+            try:
+                redis_caches = self._redis_client.redis.list()
+            except Exception as exc:
+                sys.exit("Error: fetching redis caches - {0}".format(str(exc)))
+
+            if self._args.host or self.tags or self.locations:
+                selected_redis_cache = self._selected_redis_caches(redis_caches)
+                self._load_redis_caches(selected_redis_cache)
+            else:
+                self._load_redis_caches(redis_caches)
+
     def get_inventory(self):
         if len(self.resource_groups) > 0:
             # get VMs for requested resource groups
             for resource_group in self.resource_groups:
                 try:
-                    web_apps = self._webapp_client.web_apps.list_by_resource_group(resource_group)
-                    app_service_plans = self._webapp_client.app_service_plans.list_by_resource_group(resource_group)
+                    virtual_machines = self._compute_client.virtual_machines.list(resource_group)					
                 except Exception as exc:
                     sys.exit("Error: fetching virtual machines for resource group {0} - {1}".format(resource_group, str(exc)))
                 if self._args.host or self.tags:
-                    selected_webapps = self._selected_webapps(web_apps)
-                    selected_plans = self._selected_plans(app_service_plans)
-                    self._load_webapps(selected_webapps)
-                    self._load_plans(selected_plans)
+                    selected_machines = self._selected_machines(virtual_machines)
+                    self._load_machines(selected_machines)
                 else:
-                    self._load_webapps(web_apps)
-                    self._load_plans(app_service_plans)
+                    self._load_machines(virtual_machines)
         else:
             # get all VMs within the subscription
             try:
-                web_apps = self._webapp_client.web_apps.list()
-                app_service_plans = self._webapp_client.app_service_plans.list()
+                virtual_machines = self._compute_client.virtual_machines.list_all()
             except Exception as exc:
                 sys.exit("Error: fetching virtual machines - {0}".format(str(exc)))
 
             if self._args.host or self.tags or self.locations:
-                selected_webapps = self._selected_webapps(web_apps)
-                selected_plans = self._selected_plans(app_service_plans)
-                self._load_webapps(selected_webapps)
-                self._load_plans(selected_plans)
+                selected_machines = self._selected_machines(virtual_machines)
+                self._load_machines(selected_machines)
             else:
-                self._load_webapps(web_apps)
-                self._load_plans(app_service_plans)
+                self._load_machines(virtual_machines)
 
-    def _load_webapps(self, webapps):
-        for webapp in webapps:
-            id_dict = azure_id_to_dict(webapp.id)
+    def _load_redis_caches(self, redis_caches):
+        for redis in redis_caches:
+            id_dict = azure_id_to_dict(redis.id)
 
+            # TODO - The API is returning an ID value containing resource group name in ALL CAPS. If/when it gets
+            #       fixed, we should remove the .lower(). Opened Issue
+            #       #574: https://github.com/Azure/azure-sdk-for-python/issues/574
             resource_group = id_dict['resourceGroups'].lower()
 
-            if self.group_by_security_group:
-                self._get_security_groups(resource_group)
+            #if self.group_by_security_group:
+            #    self._get_security_groups(resource_group)
 
-            host_vars = dict(
-                ansible_host=None,
-                private_ip=None,
-                private_ip_alloc_method=None,
-                public_ip=None,
-                public_ip_name=None,
-                public_ip_id=None,
-                public_ip_alloc_method=None,
-                fqdn=webapp.default_host_name,
-                location=webapp.location,
-                name=webapp.name,
-                type=webapp.type,
-                id=webapp.id,
-                tags=webapp.tags,
-                network_interface_id=None,
-                network_interface=None,
-                resource_group=resource_group,
-                mac_address=None,
-                plan=webapp.server_farm_id,
-                virtual_machine_size=None,
-                computer_name=None,
-                provisioning_state=webapp.state,
+            redis_vars = dict(
+                name = redis.name,
+                type = redis.type,
+                location = redis.location,
+                resource_group = resource_group,
+                enable_non_ssl_port = redis.enable_non_ssl_port,
+                sku_name = redis.sku.name,
+                sku_family = redis.sku.family,
+                sku_capacity = redis.sku.capacity,
+                provisioning_state = redis.provisioning_state                
             )
 
-            if self.include_powerstate:
-                host_vars['powerstate'] = webapp.enabled
+            self._add_redis(redis_vars)
 
-            host_vars['type'] = "web_app"        
+    def _load_machines(self, machines):
+        for machine in machines:
+            id_dict = azure_id_to_dict(machine.id)
 
-            self._add_host(host_vars)
-
-    def _load_plans(self, plans):
-        for plan in plans:
-            id_dict = azure_id_to_dict(plan.id)
-
+            # TODO - The API is returning an ID value containing resource group name in ALL CAPS. If/when it gets
+            #       fixed, we should remove the .lower(). Opened Issue
+            #       #574: https://github.com/Azure/azure-sdk-for-python/issues/574
             resource_group = id_dict['resourceGroups'].lower()
 
             if self.group_by_security_group:
@@ -448,57 +467,105 @@ class AzureInventory(object):
                 public_ip_id=None,
                 public_ip_alloc_method=None,
                 fqdn=None,
-                location=plan.location,
-                name=plan.name,
-                type=plan.type,
-                id=plan.id,
-                tags=plan.tags,
+                location=machine.location,
+                name=machine.name,
+                type=machine.type,
+                id=machine.id,
+                tags=machine.tags,
                 network_interface_id=None,
                 network_interface=None,
                 resource_group=resource_group,
                 mac_address=None,
-                plan=None,
-                virtual_machine_size=None,
-                computer_name=None,
-                provisioning_state=plan.provisioning_state
+                plan=(machine.plan.name if machine.plan else None),
+                virtual_machine_size=machine.hardware_profile.vm_size,
+                computer_name=(machine.os_profile.computer_name if machine.os_profile else None),
+                provisioning_state=machine.provisioning_state,
             )
 
-            host_vars['sku'] = dict(
-                name=plan.sku.name,
-                tier=plan.sku.tier,
-                size=plan.sku.size,
-                family=plan.sku.family,
-                capacity=plan.sku.capacity
+            host_vars['os_disk'] = dict(
+                name=machine.storage_profile.os_disk.name,
+                operating_system_type=machine.storage_profile.os_disk.os_type.value
             )
 
             if self.include_powerstate:
-                host_vars['powerstate'] = True
+                host_vars['powerstate'] = self._get_powerstate(resource_group, machine.name)
 
-            host_vars['type'] = "app_service_plan"    
+            if machine.storage_profile.image_reference:
+                host_vars['image'] = dict(
+                    offer=machine.storage_profile.image_reference.offer,
+                    publisher=machine.storage_profile.image_reference.publisher,
+                    sku=machine.storage_profile.image_reference.sku,
+                    version=machine.storage_profile.image_reference.version
+                )
+
+            # Add windows details
+            if machine.os_profile is not None and machine.os_profile.windows_configuration is not None:
+                host_vars['windows_auto_updates_enabled'] = \
+                    machine.os_profile.windows_configuration.enable_automatic_updates
+                host_vars['windows_timezone'] = machine.os_profile.windows_configuration.time_zone
+                host_vars['windows_rm'] = None
+                if machine.os_profile.windows_configuration.win_rm is not None:
+                    host_vars['windows_rm'] = dict(listeners=None)
+                    if machine.os_profile.windows_configuration.win_rm.listeners is not None:
+                        host_vars['windows_rm']['listeners'] = []
+                        for listener in machine.os_profile.windows_configuration.win_rm.listeners:
+                            host_vars['windows_rm']['listeners'].append(dict(protocol=listener.protocol,
+                                                                             certificate_url=listener.certificate_url))
+
+            for interface in machine.network_profile.network_interfaces:
+                interface_reference = self._parse_ref_id(interface.id)
+                network_interface = self._network_client.network_interfaces.get(
+                    interface_reference['resourceGroups'],
+                    interface_reference['networkInterfaces'])
+                if network_interface.primary:
+                    if self.group_by_security_group and \
+                       self._security_groups[resource_group].get(network_interface.id, None):
+                        host_vars['security_group'] = \
+                            self._security_groups[resource_group][network_interface.id]['name']
+                        host_vars['security_group_id'] = \
+                            self._security_groups[resource_group][network_interface.id]['id']
+                    host_vars['network_interface'] = network_interface.name
+                    host_vars['network_interface_id'] = network_interface.id
+                    host_vars['mac_address'] = network_interface.mac_address
+                    for ip_config in network_interface.ip_configurations:
+                        host_vars['private_ip'] = ip_config.private_ip_address
+                        host_vars['private_ip_alloc_method'] = ip_config.private_ip_allocation_method
+                        if ip_config.public_ip_address:
+                            public_ip_reference = self._parse_ref_id(ip_config.public_ip_address.id)
+                            public_ip_address = self._network_client.public_ip_addresses.get(
+                                public_ip_reference['resourceGroups'],
+                                public_ip_reference['publicIPAddresses'])
+                            host_vars['ansible_host'] = public_ip_address.ip_address
+                            host_vars['public_ip'] = public_ip_address.ip_address
+                            host_vars['public_ip_name'] = public_ip_address.name
+                            host_vars['public_ip_alloc_method'] = public_ip_address.public_ip_allocation_method
+                            host_vars['public_ip_id'] = public_ip_address.id
+                            if public_ip_address.dns_settings:
+                                host_vars['fqdn'] = public_ip_address.dns_settings.fqdn
 
             self._add_host(host_vars)
 
-    def _selected_webapps(self, webapps):
-        selected_webapps = []
-        for webapp in webapps:
-            if self._args.host and self._args.host == webapp.name:
-                selected_webapps.append(webapp)
-            if self.tags and self._tags_match(webapp.tags, self.tags):
-                selected_webapps.append(webapp)
-            if self.locations and webapp.location in self.locations:
-                selected_webapps.append(webapp)
-        return selected_webapps
-
-    def _selected_plans(self, plans):
-        selected_plans = []
-        for plan in plans:
-            if self._args.host and self._args.host == plan.name:
-                selected_plans.append(plan)
-            if self.tags and self._tags_match(plan.tags, self.tags):
-                selected_plans.append(plan)
-            if self.locations and plan.location in self.locations:
-                selected_plans.append(plan)
-        return selected_plans        
+    def _selected_machines(self, virtual_machines):
+        selected_machines = []
+        for machine in virtual_machines:
+            if self._args.host and self._args.host == machine.name:
+                selected_machines.append(machine)
+            if self.tags and self._tags_match(machine.tags, self.tags):
+                selected_machines.append(machine)
+            if self.locations and machine.location in self.locations:
+                selected_machines.append(machine)
+        return selected_machines
+	
+    def _selected_redis_caches(self, redis_caches):
+        selected_redis_caches = []
+        for redis_cache in redis_caches:
+            if self._args.host_name and self._args.host_name == redis_cache.host_name:
+                selected_redis_caches.append(redis_cache)
+            if self.tags and self._tags_match(machine.tags, self.tags):
+                selected_redis_caches.append(redis_cache)
+            if self.locations and machine.location in self.locations:
+                selected_redis_caches.append(redis_cache)
+        return selected_redis_caches
 
     def _get_security_groups(self, resource_group):
         ''' For a given resource_group build a mapping of network_interface.id to security_group name '''
@@ -514,11 +581,34 @@ class AzureInventory(object):
                             id=group.id
                         )
 
+    def _get_powerstate(self, resource_group, name):
+        try:
+            vm = self._compute_client.virtual_machines.get(resource_group,
+                                                           name,
+                                                           expand='instanceview')
+        except Exception as exc:
+            sys.exit("Error: fetching instanceview for host {0} - {1}".format(name, str(exc)))
+
+        return next((s.code.replace('PowerState/', '')
+                    for s in vm.instance_view.statuses if s.code.startswith('PowerState')), None)
+
+    def _add_redis(self, vars):
+
+        redis_name = self._to_safe(vars['name'])
+        resource_group = self._to_safe(vars['resource_group'])
+
+        if self.group_by_resource_group:
+            if not self._inventory.get(resource_group):
+                self._inventory[resource_group] = []
+            self._inventory[resource_group].append(redis_name)
+
+        self._inventory['_meta']['hostvars'][redis_name] = vars
+        self._inventory['azure'].append(redis_name)
+    
     def _add_host(self, vars):
 
         host_name = self._to_safe(vars['name'])
         resource_group = self._to_safe(vars['resource_group'])
-        type_info = self._to_safe(vars['type'])
         security_group = None
         if vars.get('security_group'):
             security_group = self._to_safe(vars['security_group'])
@@ -527,10 +617,6 @@ class AzureInventory(object):
             if not self._inventory.get(resource_group):
                 self._inventory[resource_group] = []
             self._inventory[resource_group].append(host_name)
-
-        if not self._inventory.get(type_info):
-            self._inventory[type_info] = []
-        self._inventory[type_info].append(host_name)    
 
         if self.group_by_location:
             if not self._inventory.get(vars['location']):
@@ -547,9 +633,13 @@ class AzureInventory(object):
 
         if self.group_by_tag and vars.get('tags'):
             for key, value in vars['tags'].items():
-                safe_value = self._to_safe(value)
+                safe_key = self._to_safe(key)
+                safe_value = safe_key + '_' + self._to_safe(value)
+                if not self._inventory.get(safe_key):
+                    self._inventory[safe_key] = []
                 if not self._inventory.get(safe_value):
                     self._inventory[safe_value] = []
+                self._inventory[safe_key].append(host_name)
                 self._inventory[safe_value].append(host_name)
 
     def _json_format_dict(self, pretty=False):
@@ -629,6 +719,13 @@ class AzureInventory(object):
         return settings
 
     def _tags_match(self, tag_obj, tag_args):
+        '''
+        Return True if the tags object from a VM contains the requested tag values.
+
+        :param tag_obj:  Dictionary of string:string pairs
+        :param tag_args: List of strings in the form key=value
+        :return: boolean
+        '''
 
         if not tag_obj:
             return False
@@ -657,8 +754,16 @@ class AzureInventory(object):
 
 def main():
     if not HAS_AZURE:
+        #result = ""
+        #x = freeze.freeze()
+        #for p in x:
+        #    result = result + p + ' '
+        #sys.exit(result)
         sys.exit("The Azure python sdk is not installed (try `pip install 'azure>={0}' --upgrade`) - {1}".format(AZURE_MIN_VERSION, HAS_AZURE_EXC))
+    else:
+        AzureInventory()
 
-    AzureInventory()
 
-main()
+if __name__ == '__main__':
+    main()
+
