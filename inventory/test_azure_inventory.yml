@@ -1,4 +1,5 @@
 - name: Test the inventory script
   hosts: all
+  gather_facts: no
   tasks:
     - debug: msg="{{ inventory_hostname }} found"
