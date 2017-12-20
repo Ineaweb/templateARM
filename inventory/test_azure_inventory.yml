@@ -1,4 +1,4 @@
 - name: Test the inventory script
   hosts: localhost
   tasks:
-    - debug: msg="{{ inventory_hostname }} has powerstate {{ powerstate }}"
+    - debug: msg="{{ inventory_hostname }} found"
