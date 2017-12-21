@@ -9,28 +9,7 @@
   },
   "azure": {
 	"hosts": [ 
-		"z-aim-pmo1-wso-dev-ew1-web" : {
-			"vars": {
-				"fqdn": "z-aim-npo2-wso-dev-ew1-web.azurewebsites.net", 
-				"id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-npo2-wso-dev-ew1-web", 
-				"location": "West Europe", 
-				"name": "z-aim-npo2-wso-dev-ew1-web", 
-				"plan": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo2-wso-dev-ew1-plan", 
-				"powerstate": true, 
-				"provisioning_state": "Running", 
-				"resource_group": "z-aim-npo2-wso-dev-ew1-rg", 
-				"tags": {
-				  "global:app": "wso", 
-				  "global:billing": "XXXXX:XXXXX", 
-				  "global:dcs": "FIN", 
-				  "global:env": "dev", 
-				  "global:lifecycle": "1453739311:15000", 
-				  "global:project": "aim", 
-				  "global:rev": "1.0.0.1"
-				}, 
-				"type": "web_app"
-			}
-		}, 
+		"z-aim-pmo1-wso-dev-ew1-web",
 		"z-aim-pmo1-wso-dev-ew1-plan"
 	],
 	"children": [],
