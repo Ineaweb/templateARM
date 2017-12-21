@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "hostvars": {
+      "z-aim-npo1-wso-dev-ew1-redis": {
+        "enable_non_ssl_port": false, 
+        "location": "West Europe", 
+        "name": "z-aim-npo1-wso-dev-ew1-redis", 
+        "provisioning_state": "Succeeded", 
+        "resource_group": "z-aim-npo1-wso-dev-ew1-rg", 
+        "sku_capacity": 1, 
+        "sku_family": "P", 
+        "sku_name": "Premium", 
+        "type": "Microsoft.Cache/Redis"
+      }, 
+      "z-aim-npo2-wso-dev-ew1-redis": {
+        "enable_non_ssl_port": false, 
+        "location": "West Europe", 
+        "name": "z-aim-npo2-wso-dev-ew1-redis", 
+        "provisioning_state": "Succeeded", 
+        "resource_group": "z-aim-npo2-wso-dev-ew1-rg", 
+        "sku_capacity": 1, 
+        "sku_family": "P", 
+        "sku_name": "Premium", 
+        "type": "Microsoft.Cache/Redis"
+      }, 
+      "z-aim-pmo1-wso-dev-ew1-redis": {
+        "enable_non_ssl_port": false, 
+        "location": "West Europe", 
+        "name": "z-aim-pmo1-wso-dev-ew1-redis", 
+        "provisioning_state": "Succeeded", 
+        "resource_group": "z-aim-pmo1-wso-dev-ew1-rg", 
+        "sku_capacity": 1, 
+        "sku_family": "P", 
+        "sku_name": "Premium", 
+        "type": "Microsoft.Cache/Redis"
+      }
+    }
+  }, 
+  "azure": [
+    "z-aim-npo1-wso-dev-ew1-redis", 
+    "z-aim-pmo1-wso-dev-ew1-redis", 
+    "z-aim-npo2-wso-dev-ew1-redis"
+  ], 
+  "z-aim-npo1-wso-dev-ew1-rg": [
+    "z-aim-npo1-wso-dev-ew1-redis"
+  ], 
+  "z-aim-npo2-wso-dev-ew1-rg": [
+    "z-aim-npo2-wso-dev-ew1-redis"
+  ], 
+  "z-aim-pmo1-wso-dev-ew1-rg": [
+    "z-aim-pmo1-wso-dev-ew1-redis"
+  ]
+}
