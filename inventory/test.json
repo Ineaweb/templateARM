@@ -6,13 +6,5 @@
 	],
 	"children": [],
 	"vars": {}
-  },
-  "azure": {
-	"hosts": [ 
-		"z-aim-pmo1-wso-dev-ew1-web",
-		"z-aim-pmo1-wso-dev-ew1-plan"
-	],
-	"children": [],
-	"vars": {}
-  }  
+  }
 }
