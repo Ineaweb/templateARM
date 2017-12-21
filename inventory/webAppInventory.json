@@ -41,7 +41,7 @@
     "z-aim-npo2-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
-  "_meta": {
+  "all": {
     "hostvars": {
       "FIASF-MAIA-WSO-DEVTEST-ISOLATED-ASP-01": {
         "ansible_host": null, 
