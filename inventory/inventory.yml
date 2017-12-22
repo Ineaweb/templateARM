@@ -3,11 +3,9 @@
   gather_facts: no
   tasks:
     - name: Fetch Repository (Git)
-      shell: git fetch --all   
-    - name: Reset Repository (Git)
-      shell: git reset --hard
-    - name: Pull Repository (Git)
-      shell: git pull master          
+      shell: git fetch  
+    - name: Checkout Repository (Git)
+      shell: git checkout master         
     - name: Upgrade azure webApps
       shell: python azure_webapp_rm.py --pretty > webAppInventory.json
     - name: Upgrade azure Redis
