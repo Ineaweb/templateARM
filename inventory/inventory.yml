@@ -2,5 +2,17 @@
   hosts: localhost
   gather_facts: no
   tasks:
-    - name: Run inventory
-      shell: awx-manage inventory_import --custom --source=azure_webapp_rm.py --inventory-name=z-aim-pmo3-inventory --overwrite || true
+    - name: Fetch Repository (Git)
+      shell: git fetch    
+    - name: Reset Repository (Git)
+      shell: git reset --hard
+    - name: Pull Repository (Git)
+      shell: git pull           
+    - name: Upgrade azure webApps
+      shell: python azure_webapp_rm.py --pretty > webAppInventory.json
+    - name: Upgrade azure Redis
+      shell: python azure_redis_rm.py --pretty > RedisInventory.json
+    - name: Commit Repository (Git)
+      shell: git commit -a -m 'Update Inventory {{ ansible_date_time.iso8601 }}'    
+    - name: Push Repository (Git)
+      shell: git push      
