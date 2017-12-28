@@ -2,9 +2,6 @@
   hosts: ansible
   gather_facts: no
   tasks:
-    - name: Upgrade azure SDK
-      shell: pip install azure==2.0.0rc6 --upgrade --force-reinstall || true
-      become: true
     - name: Fetch Repository (Git)
       shell: git fetch  
     - name: Checkout Repository (Git)
