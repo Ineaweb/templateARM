@@ -1,5 +1,5 @@
 - name: The inventory script
-  hosts: localhost
+  hosts: ansible
   gather_facts: no
   tasks:
     - name: Upgrade azure SDK
