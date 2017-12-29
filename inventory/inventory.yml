@@ -2,6 +2,8 @@
   hosts: ansible
   gather_facts: no
   tasks:
+    - name: Init Path (Git)
+      shell: cd templateARM/inventory  
     - name: Fetch Repository (Git)
       shell: git fetch  
     - name: Checkout Repository (Git)
