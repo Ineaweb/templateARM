@@ -1,13 +1,13 @@
 - name: The inventory script
-  hosts: ansible
+  hosts: azure
   gather_facts: true
   tasks:
     - name: Fetch Repository (Git)
       shell: git fetch  
       args:
         chdir: ~/templateARM/inventory
-    - name: Checkout Repository (Git)
-      shell: git checkout master
+    - name: Pull Repository (Git)
+      shell: git pull
       args:
         chdir: ~/templateARM/inventory      
     - name: Upgrade azure webApps
