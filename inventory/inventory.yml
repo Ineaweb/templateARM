@@ -1,5 +1,5 @@
 - name: The inventory script
-  hosts: ansible
+  hosts: azure
   gather_facts: true
   tasks:
     - name: Fetch Repository (Git)
