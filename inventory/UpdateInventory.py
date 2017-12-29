@@ -10,11 +10,12 @@ import inspect
 
 def main():
 	cwd = os.getcwd()
-
-    with open("'{0}'/webAppInventory.json".format(cwd), 'r') as webapp_file:
+	webapppath = "{0}/webAppInventory.json".format(cwd)
+	redispath = "{0}/RedisInventory.json".format(cwd)
+    with open(webapppath, 'r') as webapp_file:
         webapp = webapp_file.read()
         print(webapp)		
-	with open("'{0}'/RedisInventory.json".format(cwd), 'r') as redis_file:
+	with open(redispath, 'r') as redis_file:
         redis = redis_file.read()
         print(redis)	
 
