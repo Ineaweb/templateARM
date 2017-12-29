@@ -2,17 +2,5 @@
   hosts: ansible
   gather_facts: true
   tasks:
-    - name: Init Path (Git)
-      shell: cd templateARM/inventory  
-    - name: Fetch Repository (Git)
-      shell: git fetch  
-    - name: Checkout Repository (Git)
-      shell: git checkout master         
-    - name: Upgrade azure webApps
-      shell: python azure_webapp_rm.py --pretty > webAppInventory.json
-    - name: Upgrade azure Redis
-      shell: python azure_redis_rm.py --pretty > RedisInventory.json
-    - name: Commit Repository (Git)
-      shell: git commit -a -m 'Update Inventory {{ ansible_date_time.iso8601 }}'    
-    - name: Push Repository (Git)
-      shell: git push      
+    - name: Run bash
+      command: inventory.sh       
