@@ -9,7 +9,7 @@ import sys
 import inspect
 
 def main():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
+    dir_path = os.path.dirname(__file__)
     webapppath = "{0}/webAppInventory.json".format(dir_path)
     redispath = "{0}/RedisInventory.json".format(dir_path)
     with open(webapppath, 'r') as webapp_file:
