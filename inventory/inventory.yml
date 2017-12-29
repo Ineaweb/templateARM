@@ -3,4 +3,12 @@
   gather_facts: true
   tasks:
     - name: Run bash
-      shell: inventory.sh       
+      shell: |
+        cd ~/templateARM/inventory  
+        git fetch 
+        git checkout master
+        python azure_webapp_rm.py --pretty > webAppInventory.json
+        python azure_redis_rm.py --pretty > RedisInventory.json
+        git commit -a -m "Update Inventory {{ ansible_date_time.iso8601 }}" 
+        git push
+        exit 0        
