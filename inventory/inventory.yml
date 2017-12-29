@@ -2,8 +2,8 @@
   hosts: ansible
   gather_facts: no
   tasks:
-    - name: Fetch Repository (Git)
-      shell: git fetch  
+    - name: Clone Repository (Git)
+      shell: git clone https://github.com/Ineaweb/templateARM.git
     - name: Checkout Repository (Git)
       shell: git checkout master         
     - name: Upgrade azure webApps
