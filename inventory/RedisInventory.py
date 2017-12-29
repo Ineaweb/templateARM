@@ -9,7 +9,7 @@ import sys
 import inspect
 
 def main():
-    with open('RedisInventory.json', 'r') as content_file:
+    with open('/var/lib/awx/projects/_6__tsf_azure/inventory/RedisInventory.json', 'r') as content_file:
         content = content_file.read()
         print(content)
 
