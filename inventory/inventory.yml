@@ -6,8 +6,8 @@
       shell: git fetch  
       args:
         chdir: ~/templateARM/inventory
-    - name: Checkout Repository (Git)
-      shell: git checkout master
+    - name: Pull Repository (Git)
+      shell: git pull
       args:
         chdir: ~/templateARM/inventory      
     - name: Upgrade azure webApps
