@@ -206,8 +206,8 @@
         "sku": {
           "capacity": 1, 
           "family": "S", 
-          "name": "S2", 
-          "size": "S2", 
+          "name": "S1", 
+          "size": "S1", 
           "tier": "Standard"
         }, 
         "tags": {
