@@ -1,6 +1,0 @@
-- name: The upgrade azure script
-  hosts: localhost
-  gather_facts: no
-  tasks:
-    - name: Show azure version
-      shell: pip freeze || true      
