@@ -1,6 +1,7 @@
 - name: The inventory script
   hosts: ansible
   gather_facts: true
+  accelerate: true
   tasks:
     - name: Init Path (Git)
       shell: cd templateARM/inventory  
