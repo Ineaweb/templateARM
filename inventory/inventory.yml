@@ -2,13 +2,27 @@
   hosts: ansible
   gather_facts: true
   tasks:
-    - name: Run bash
-      shell: |
-        cd ~/templateARM/inventory  
-        git fetch 
-        git checkout master
-        python azure_webapp_rm.py --pretty > webAppInventory.json
-        python azure_redis_rm.py --pretty > RedisInventory.json
-        git commit -a -m "Update Inventory {{ ansible_date_time.iso8601 }}" 
-        git push
-        exit 0        
+    - name: Fetch Repository (Git)
+      shell: git fetch  
+      args:
+        chdir: ~/templateARM/inventory
+    - name: Checkout Repository (Git)
+      shell: git checkout master
+      args:
+        chdir: ~/templateARM/inventory      
+    - name: Upgrade azure webApps
+      shell: python azure_webapp_rm.py --pretty > webAppInventory.json
+      args:
+        chdir: ~/templateARM/inventory
+    - name: Upgrade azure Redis
+      shell: python azure_redis_rm.py --pretty > RedisInventory.json
+      args:
+        chdir: ~/templateARM/inventory
+    - name: Commit Repository (Git)
+      shell: git commit -a -m 'Update Inventory {{ ansible_date_time.iso8601 }}'
+      args:
+        chdir: ~/templateARM/inventory      
+    - name: Push Repository (Git)
+      shell: git push
+      args:
+        chdir: ~/templateARM/inventory      
