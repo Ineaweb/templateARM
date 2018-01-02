@@ -718,6 +718,17 @@ class AzureInventory(object):
                             id=group.id
                         )
 
+    def _get_powerstate(self, resource_group, name):
+        try:
+            vm = self._compute_client.virtual_machines.get(resource_group,
+                                                           name,
+                                                           expand='instanceview')
+        except Exception as exc:
+            sys.exit("Error: fetching instanceview for host {0} - {1}".format(name, str(exc)))
+
+        return next((s.code.replace('PowerState/', '')
+                    for s in vm.instance_view.statuses if s.code.startswith('PowerState')), None)
+
     def _add_redis(self, vars):
 
         redis_name = self._to_safe(vars['name'])
