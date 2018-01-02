@@ -6,22 +6,22 @@
    - name: Run ARM template
      azure_rm_deployment:
       state: present
-      resource_group_name: "z-{{opco_code}}-{{project_code}}-{{app_code}}-{{env_code}}-{{location_code}}-rg"
+      resource_group_name: "z-{{ opco_code }}-{{ project_code }}-{{ app_code }}-{{ env_code }}-{{ location_code }}-rg"
       location: westeurope
       tags:
         from: ansible
       template_link: "https://raw.githubusercontent.com/Ineaweb/templateARM/master/template-Vnet-Web.json"
       parameters:
         location_code:
-          value: {{location_code}}
+          value: "{{ location_code }}"
         opco_code:
-          value: {{opco_code}}
+          value: "{{ opco_code }}"
         project_code:
-          value: {{project_code}}
+          value: "{{ project_code }}"
         app_code:
-          value: {{app_code}}
+          value: "{{ app_code }}"
         env_code:
-          value: {{env_code}}
+          value: "{{ env_code }}"
         location_name:
           value: West Europe
         rev_number:
