@@ -6,9 +6,37 @@
    - name: Run ARM template
      azure_rm_deployment:
       state: present
-      resource_group_name: z-aim-pmo2-wso-dev-ew1-rg
+      resource_group_name: "z-{{opco_code}}-{{project_code}}-{{app_code}}-{{env_code}}-{{location_code}}-rg"
       location: westeurope
       tags:
-       from: ansible
-      template_link: "https://raw.githubusercontent.com/KikiGonzales/templateARM/master/template-Vnet-Web.json"
-      parameters_link: "https://raw.githubusercontent.com/KikiGonzales/templateARM/master/parameters-Vnet-Web.json"
+        from: ansible
+      template_link: "https://raw.githubusercontent.com/Ineaweb/templateARM/master/template-Vnet-Web.json"
+      parameters:
+        location_code:
+          value: {{location_code}}
+        opco_code:
+          value: {{opco_code}}
+        project_code:
+          value: {{project_code}}
+        app_code:
+          value: {{app_code}}
+        env_code:
+          value: {{env_code}}
+        location_name:
+          value: West Europe
+        rev_number:
+          value: 1.0.0.1
+        dcs_code:
+          value: FIN
+        client_billingCode:
+          value: XXXXX
+        project_billingCode:
+          value: XXXXX
+        start_time:
+          value: 0 8 ***   
+        stop_time:
+          value: 0 19 ***
+        launch_time:
+          value: 1453739311   
+        time_to_live:
+          value: 15000                                              
