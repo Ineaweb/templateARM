@@ -1,0 +1,212 @@
+{
+    "1453739311_15000": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "1_0_0_1": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "FIN": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "Microsoft_Compute_virtualMachines": [
+        "TsfAnsibleAgentPoc", 
+        "TsfAnsiblePoc", 
+        "TsfAnsibleTowerPoc", 
+        "TsfAwxPoc", 
+        "TsfSemaphorePoc", 
+        "amortest"
+    ], 
+    "TsfAnsibleAgentPoc-nsg": [
+        "TsfAnsibleAgentPoc"
+    ], 
+    "TsfAnsiblePoc-nsg": [
+        "TsfAnsiblePoc"
+    ], 
+    "TsfAnsibleTowerPoc-nsg": [
+        "TsfAnsibleTowerPoc"
+    ], 
+    "TsfAwxPoc-nsg": [
+        "TsfAwxPoc"
+    ], 
+    "TsfSemaphorePoc-nsg": [
+        "TsfSemaphorePoc"
+    ], 
+    "West Europe": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "XXXXX_XXXXX": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "aim": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "all": [
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-redis", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web", 
+        "amortest", 
+        "localhost", 
+        "TsfAnsiblePoc", 
+        "TsfAnsibleAgentPoc", 
+        "TsfAwxPoc", 
+        "z-aim-npo1-wso-dev-ew1-redis", 
+        "TsfSemaphorePoc", 
+        "52.174.161.79", 
+        "TsfAnsibleTowerPoc", 
+        "z-aim-pmo1-wso-dev-ew1-redis"
+    ], 
+    "amortestnsg248": [
+        "amortest"
+    ], 
+    "ansible": [
+        "localhost"
+    ], 
+    "ansible-azure": [
+        "52.174.161.79"
+    ], 
+    "ansible-poc": [
+        "TsfAnsiblePoc"
+    ], 
+    "app_service_plan": [
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-plan"
+    ], 
+    "azure": [
+        "TsfAnsibleAgentPoc", 
+        "TsfAnsiblePoc", 
+        "TsfAnsibleTowerPoc", 
+        "TsfAwxPoc", 
+        "TsfSemaphorePoc", 
+        "amortest", 
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-redis", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-redis", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-redis", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "dev": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "tsf-ansible-poc-rg": [
+        "TsfAnsibleTowerPoc"
+    ], 
+    "tsf-ansibleagent-poc-rg": [
+        "TsfAnsibleAgentPoc"
+    ], 
+    "tsf-awx-poc-rg": [
+        "TsfAwxPoc"
+    ], 
+    "tsf-semaphore-poc-rg": [
+        "TsfSemaphorePoc"
+    ], 
+    "ungrouped": [], 
+    "web_app": [
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "westeurope": [
+        "TsfAnsibleAgentPoc", 
+        "TsfAnsiblePoc", 
+        "TsfAnsibleTowerPoc", 
+        "TsfAwxPoc", 
+        "TsfSemaphorePoc", 
+        "amortest"
+    ], 
+    "wso": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-web", 
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-web", 
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-web", 
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "z-aim-npo1-wso-dev-ew1-rg": [
+        "z-aim-npo1-wso-dev-ew1-plan", 
+        "z-aim-npo1-wso-dev-ew1-redis", 
+        "z-aim-npo1-wso-dev-ew1-web"
+    ], 
+    "z-aim-npo2-wso-dev-ew1-rg": [
+        "z-aim-npo2-wso-dev-ew1-plan", 
+        "z-aim-npo2-wso-dev-ew1-redis", 
+        "z-aim-npo2-wso-dev-ew1-web"
+    ], 
+    "z-aim-pmo1-wso-dev-ew1-rg": [
+        "z-aim-pmo1-wso-dev-ew1-plan", 
+        "z-aim-pmo1-wso-dev-ew1-redis", 
+        "z-aim-pmo1-wso-dev-ew1-web"
+    ], 
+    "z-aim-pmo2-wso-dev-ew1-rg": [
+        "z-aim-pmo2-wso-dev-ew1-plan", 
+        "z-aim-pmo2-wso-dev-ew1-web"
+    ], 
+    "z-aim-trans-shrd-dvc-euw-rgp01": [
+        "amortest"
+    ]
+}
