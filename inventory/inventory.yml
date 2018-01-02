@@ -10,12 +10,8 @@
       shell: git pull
       args:
         chdir: ~/templateARM/inventory      
-    - name: Upgrade azure webApps
-      shell: python azure_webapp_rm.py --pretty > webAppInventory.json
-      args:
-        chdir: ~/templateARM/inventory
-    - name: Upgrade azure Redis
-      shell: python azure_redis_rm.py --pretty > RedisInventory.json
+    - name: Upgrade azure inventory
+      shell: python azure_full_rm.py --pretty > fullInventory.json
       args:
         chdir: ~/templateARM/inventory
     - name: Commit Repository (Git)
