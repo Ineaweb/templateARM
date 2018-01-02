@@ -22,20 +22,20 @@
         env_code:
           value: "{{ env_code }}"
         location_name:
-          value: West Europe
+          value: "West Europe"
         rev_number:
-          value: 1.0.0.1
+          value: "1.0.0.1"
         dcs_code:
           value: FIN
         client_billingCode:
-          value: XXXXX
+          value: "XXXXX"
         project_billingCode:
-          value: XXXXX
+          value: "XXXXX"
         start_time:
-          value: 0 8 ***   
+          value: "0 8 ***" 
         stop_time:
-          value: 0 19 ***
+          value: "0 19 ***"
         launch_time:
-          value: 1453739311   
+          value: "1453739311"
         time_to_live:
-          value: 15000                                              
+          value: "15000"                                              
