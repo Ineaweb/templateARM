@@ -3,22 +3,22 @@
   gather_facts: false
   tasks:
    - name: Module Variables ("vars")
-     shell: echo "{{ vars | to_nice_json }}" > allvars1.json
-     args:
-       chdir: ~/templateARM/inventory   
+     copy:
+       content: "{{ vars | to_nice_json }}"
+       dest: ~/templateARM/inventory/allvars1.json
    - name: Environment Variables ("environment")
-     shell: echo "{{ environment | to_nice_json }}" > allvars2.json
-     args:
-       chdir: ~/templateARM/inventory    
+     copy:
+       content: "{{ environment | to_nice_json }}"
+       dest: ~/templateARM/inventory/allvars2.json   
    - name: GROUP NAMES Variables ("group_names")
-     shell: echo "{{ environment | to_nice_json }}" > allvars3.json
-     args:
-       chdir: ~/templateARM/inventory  
+     copy:
+       content: "{{ group_names | to_nice_json }}"
+       dest: ~/templateARM/inventory/allvars3.json  
    - name: GROUPS Variables ("groups")
-     shell: echo "{{ groups | to_nice_json }}" > allvars4.json
-     args:
-       chdir: ~/templateARM/inventory  
+     copy:
+       content: "{{ groups | to_nice_json }}"
+       dest: ~/templateARM/inventory/allvars4.json 
    - name: HOST Variables ("hostvars")
-     shell: echo "{{ hostvars | to_nice_json }}" > allvars5.json
-     args:
-       chdir: ~/templateARM/inventory   
+     copy:
+       content: "{{ hostvars | to_nice_json }}"
+       dest: ~/templateARM/inventory/allvars5.json   
