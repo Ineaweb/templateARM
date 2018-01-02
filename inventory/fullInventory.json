@@ -1,27 +1,33 @@
 {
   "1453739311_15000": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "1_0_0_1": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "FIN": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "Microsoft_Compute_virtualMachines": [
     "TsfAnsiblePoc", 
@@ -48,19 +54,23 @@
   ], 
   "West Europe": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "XXXXX_XXXXX": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "_meta": {
     "hostvars": {
@@ -528,16 +538,89 @@
         }, 
         "type": "web_app", 
         "virtual_machine_size": null
+      }, 
+      "z-aim-pmo2-wso-dev-ew1-plan": {
+        "ansible_host": null, 
+        "computer_name": null, 
+        "fqdn": null, 
+        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo2-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-pmo2-wso-dev-ew1-plan", 
+        "location": "West Europe", 
+        "mac_address": null, 
+        "name": "z-aim-pmo2-wso-dev-ew1-plan", 
+        "network_interface": null, 
+        "network_interface_id": null, 
+        "plan": null, 
+        "powerstate": true, 
+        "private_ip": null, 
+        "private_ip_alloc_method": null, 
+        "provisioning_state": null, 
+        "public_ip": null, 
+        "public_ip_alloc_method": null, 
+        "public_ip_id": null, 
+        "public_ip_name": null, 
+        "resource_group": "z-aim-pmo2-wso-dev-ew1-rg", 
+        "sku": {
+          "capacity": 1, 
+          "family": "S", 
+          "name": "S1", 
+          "size": "S1", 
+          "tier": "Standard"
+        }, 
+        "tags": {
+          "global:app": "wso", 
+          "global:billing": "XXXXX:XXXXX", 
+          "global:dcs": "FIN", 
+          "global:env": "dev", 
+          "global:lifecycle": "1453739311:15000", 
+          "global:project": "aim", 
+          "global:rev": "1.0.0.1"
+        }, 
+        "type": "app_service_plan", 
+        "virtual_machine_size": null
+      }, 
+      "z-aim-pmo2-wso-dev-ew1-web": {
+        "ansible_host": null, 
+        "computer_name": null, 
+        "fqdn": "z-aim-pmo2-wso-dev-ew1-web.azurewebsites.net", 
+        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo2-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-pmo2-wso-dev-ew1-web", 
+        "location": "West Europe", 
+        "mac_address": null, 
+        "name": "z-aim-pmo2-wso-dev-ew1-web", 
+        "network_interface": null, 
+        "network_interface_id": null, 
+        "plan": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo2-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-pmo2-wso-dev-ew1-plan", 
+        "powerstate": true, 
+        "private_ip": null, 
+        "private_ip_alloc_method": null, 
+        "provisioning_state": "Running", 
+        "public_ip": null, 
+        "public_ip_alloc_method": null, 
+        "public_ip_id": null, 
+        "public_ip_name": null, 
+        "resource_group": "z-aim-pmo2-wso-dev-ew1-rg", 
+        "tags": {
+          "global:app": "wso", 
+          "global:billing": "XXXXX:XXXXX", 
+          "global:dcs": "FIN", 
+          "global:env": "dev", 
+          "global:lifecycle": "1453739311:15000", 
+          "global:project": "aim", 
+          "global:rev": "1.0.0.1"
+        }, 
+        "type": "web_app", 
+        "virtual_machine_size": null
       }
     }
   }, 
   "aim": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "amortestnsg248": [
     "amortest"
@@ -548,15 +631,18 @@
   "app_service_plan": [
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "azure": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan", 
     "TsfAnsiblePoc", 
     "TsfAnsibleTowerPoc", 
     "TsfAnsibleAgentPoc", 
@@ -569,11 +655,13 @@
   ], 
   "dev": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "tsf-ansible-poc-rg": [
     "TsfAnsibleTowerPoc"
@@ -589,8 +677,9 @@
   ], 
   "web_app": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web"
+    "z-aim-pmo2-wso-dev-ew1-web", 
+    "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web"
   ], 
   "westeurope": [
     "TsfAnsiblePoc", 
@@ -602,11 +691,13 @@
   ], 
   "wso": [
     "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-web", 
     "z-aim-npo2-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "z-aim-npo1-wso-dev-ew1-rg": [
     "z-aim-npo1-wso-dev-ew1-web", 
@@ -622,6 +713,10 @@
     "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-pmo1-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-redis"
+  ], 
+  "z-aim-pmo2-wso-dev-ew1-rg": [
+    "z-aim-pmo2-wso-dev-ew1-web", 
+    "z-aim-pmo2-wso-dev-ew1-plan"
   ], 
   "z-aim-trans-shrd-dvc-euw-rgp01": [
     "amortest"
