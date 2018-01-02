@@ -10,7 +10,7 @@
        from: ansible
    - name: create storage account
      azure_rm_storageaccount:
-      resource_group: "tsf-test-rg}"
+      resource_group: "tsf-test-rg"
       name: "tsfteststo"
       account_type: "Standard_LRS"
       tags:
