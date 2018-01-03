@@ -24,7 +24,6 @@
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
   "Microsoft_Compute_virtualMachines": [
-    "TsfAnsiblePoc", 
     "TsfAnsibleTowerPoc", 
     "TsfAnsibleAgentPoc", 
     "TsfAwxPoc", 
@@ -32,9 +31,6 @@
   ], 
   "TsfAnsibleAgentPoc-nsg": [
     "TsfAnsibleAgentPoc"
-  ], 
-  "TsfAnsiblePoc-nsg": [
-    "TsfAnsiblePoc"
   ], 
   "TsfAnsibleTowerPoc-nsg": [
     "TsfAnsibleTowerPoc"
@@ -92,42 +88,6 @@
         "resource_group": "tsf-ansibleagent-poc-rg", 
         "security_group": "TsfAnsibleAgentPoc-nsg", 
         "security_group_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-ansibleagent-poc-rg/providers/Microsoft.Network/networkSecurityGroups/TsfAnsibleAgentPoc-nsg", 
-        "tags": null, 
-        "type": "Microsoft.Compute/virtualMachines", 
-        "virtual_machine_size": "Standard_B2ms"
-      }, 
-      "TsfAnsiblePoc": {
-        "ansible_host": "13.95.82.115", 
-        "computer_name": "TsfAnsiblePoc", 
-        "fqdn": null, 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/ANSIBLE-POC/providers/Microsoft.Compute/virtualMachines/TsfAnsiblePoc", 
-        "image": {
-          "offer": "Debian", 
-          "publisher": "credativ", 
-          "sku": "9", 
-          "version": "latest"
-        }, 
-        "location": "westeurope", 
-        "mac_address": null, 
-        "name": "TsfAnsiblePoc", 
-        "network_interface": "tsfansiblepoc763", 
-        "network_interface_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/Ansible-Poc/providers/Microsoft.Network/networkInterfaces/tsfansiblepoc763", 
-        "os_disk": {
-          "name": "TsfAnsiblePoc_OsDisk_1_4c5df89504b84936b7106b34a831eb5d", 
-          "operating_system_type": "Linux"
-        }, 
-        "plan": null, 
-        "powerstate": "deallocated", 
-        "private_ip": "10.1.0.4", 
-        "private_ip_alloc_method": "Dynamic", 
-        "provisioning_state": "Succeeded", 
-        "public_ip": "13.95.82.115", 
-        "public_ip_alloc_method": "Static", 
-        "public_ip_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/Ansible-Poc/providers/Microsoft.Network/publicIPAddresses/TsfAnsiblePoc-ip", 
-        "public_ip_name": "TsfAnsiblePoc-ip", 
-        "resource_group": "ansible-poc", 
-        "security_group": "TsfAnsiblePoc-nsg", 
-        "security_group_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/Ansible-Poc/providers/Microsoft.Network/networkSecurityGroups/TsfAnsiblePoc-nsg", 
         "tags": null, 
         "type": "Microsoft.Compute/virtualMachines", 
         "virtual_machine_size": "Standard_B2ms"
@@ -502,9 +462,6 @@
   "amortestnsg248": [
     "amortest"
   ], 
-  "ansible-poc": [
-    "TsfAnsiblePoc"
-  ], 
   "app_service_plan": [
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
@@ -517,7 +474,6 @@
     "z-aim-npo1-wso-dev-ew1-plan", 
     "z-aim-npo2-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-plan", 
-    "TsfAnsiblePoc", 
     "TsfAnsibleTowerPoc", 
     "TsfAnsibleAgentPoc", 
     "TsfAwxPoc", 
@@ -549,7 +505,6 @@
     "z-aim-npo2-wso-dev-ew1-web"
   ], 
   "westeurope": [
-    "TsfAnsiblePoc", 
     "TsfAnsibleTowerPoc", 
     "TsfAnsibleAgentPoc", 
     "TsfAwxPoc", 
