@@ -48,7 +48,28 @@
         "config_web_name": {
             "defaultValue": "web",
             "type": "String"
-        }
+        },
+		"sku_name": {
+		    "defaultValue": "S1",
+            "type": "String"	
+		},
+		"sku_tier": {
+		    "defaultValue": "Standard",
+            "type": "String"	
+		},
+		"sku_size": {
+		    "defaultValue": "S1",
+            "type": "String"	
+		},
+		"sku_family": {
+		    "defaultValue": "S",
+            "type": "String"	
+		},
+		"sku_capacity": {
+		    "defaultValue": 1,
+			"minValue": 1,
+            "type": "int"	
+		}		
     },
     "variables": 
 	{
@@ -171,11 +192,11 @@
         {
             "type": "Microsoft.Web/serverfarms",
             "sku": {
-                "name": "S1",
-                "tier": "Standard",
-                "size": "S1",
-                "family": "S",
-                "capacity": 1
+                "name": "[parameters('sku_name')]",
+                "tier": "[parameters('sku_tier')]",
+                "size": "[parameters('sku_size')]",
+                "family": "[parameters('sku_family')]",
+                "capacity": "[parameters('sku_capacity')]"
             },
             "kind": "app",
             "name": "[variables('plan_name')]",
