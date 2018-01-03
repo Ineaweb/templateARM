@@ -38,4 +38,14 @@
         launch_time:
           value: "1453739311"
         time_to_live:
-          value: "15000"                                              
+          value: "15000"
+        sku_name:
+          value: "{{ sku_name }}"
+        sku_tier:
+          value: "{{ sku_tier }}"
+        sku_size:
+          value: "{{ sku_size }}"     
+        sku_family:
+          value: "{{ sku_family }}"     
+        sku_capacity:
+          value: "{{ sku_capacity }}"                                                       
