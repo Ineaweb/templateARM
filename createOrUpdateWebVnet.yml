@@ -1,5 +1,5 @@
 - name: Create Azure WebApp with Vnet
-  hosts: all
+  hosts: ansible-azure
   gather_facts: false
   tasks:
    - name: Run ARM template
