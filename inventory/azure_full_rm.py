@@ -403,17 +403,17 @@ class AzureInventory(object):
                 if self._args.host or self.tags:
                     selected_webapps = self._selected_webapps(web_apps)
                     selected_plans = self._selected_plans(app_service_plans)
-                    selected_redis_cache = self._selected_redis_caches(redis_caches)
-                    selected_machines = self._selected_machines(virtual_machines)
+                    #selected_redis_cache = self._selected_redis_caches(redis_caches)
+                    #selected_machines = self._selected_machines(virtual_machines)
                     self._load_webapps(selected_webapps)
                     self._load_plans(selected_plans)
-                    self._load_redis_caches(selected_redis_cache)
-                    self._load_machines(selected_machines)
+                    #self._load_redis_caches(selected_redis_cache)
+                    #self._load_machines(selected_machines)
                 else:
                     self._load_webapps(web_apps)
                     self._load_plans(app_service_plans)
-                    self._load_redis_caches(redis_caches)
-                    self._load_machines(virtual_machines)
+                    #self._load_redis_caches(redis_caches)
+                    #self._load_machines(virtual_machines)
         else:
             # get all webapps within the subscription
             try:
@@ -435,17 +435,17 @@ class AzureInventory(object):
             if self._args.host or self.tags or self.locations:
                 selected_webapps = self._selected_webapps(web_apps)
                 selected_plans = self._selected_plans(app_service_plans)
-                selected_machines = self._selected_machines(virtual_machines)
-                selected_redis_cache = self._selected_redis_caches(redis_caches)
-                self._load_redis_caches(selected_redis_cache)
-                self._load_machines(selected_machines)
+                #selected_machines = self._selected_machines(virtual_machines)
+                #selected_redis_cache = self._selected_redis_caches(redis_caches)
+                #self._load_redis_caches(selected_redis_cache)
+                #self._load_machines(selected_machines)
                 self._load_webapps(selected_webapps)
                 self._load_plans(selected_plans)
             else:
                 self._load_webapps(web_apps)
                 self._load_plans(app_service_plans)
-                self._load_machines(virtual_machines)
-                self._load_redis_caches(redis_caches)
+                #self._load_machines(virtual_machines)
+                #self._load_redis_caches(redis_caches)
 
     def _load_redis_caches(self, redis_caches):
         for redis in redis_caches:
