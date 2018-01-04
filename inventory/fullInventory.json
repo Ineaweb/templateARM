@@ -1,330 +1,21 @@
 {
-  "1453739311_15000": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
+  "1453739311_15000": [ 
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
   "1_0_0_1": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
-  "FIN": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
+  "FIN": [ 
     "z-aim-pmo1-wso-dev-ew1-plan"
-  ], 
-  "Microsoft_Compute_virtualMachines": [
-    "TsfAnsibleTowerPoc", 
-    "TsfAnsibleAgentPoc", 
-    "TsfAwxPoc", 
-    "amortest"
-  ], 
-  "TsfAnsibleAgentPoc-nsg": [
-    "TsfAnsibleAgentPoc"
-  ], 
-  "TsfAnsibleTowerPoc-nsg": [
-    "TsfAnsibleTowerPoc"
-  ], 
-  "TsfAwxPoc-nsg": [
-    "TsfAwxPoc"
   ], 
   "West Europe": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
   "XXXXX_XXXXX": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
   "_meta": {
     "hostvars": {
-      "TsfAnsibleAgentPoc": {
-        "ansible_host": "52.174.161.79", 
-        "computer_name": "TsfAnsibleAgentPoc", 
-        "enabled": false, 
-        "fqdn": null, 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/TSF-ANSIBLEAGENT-POC-RG/providers/Microsoft.Compute/virtualMachines/TsfAnsibleAgentPoc", 
-        "image": {
-          "offer": "UbuntuServer", 
-          "publisher": "Canonical", 
-          "sku": "16.04-LTS", 
-          "version": "latest"
-        }, 
-        "location": "westeurope", 
-        "mac_address": "00-0D-3A-22-B0-E0", 
-        "name": "TsfAnsibleAgentPoc", 
-        "network_interface": "tsfansibleagentpoc266", 
-        "network_interface_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-ansibleagent-poc-rg/providers/Microsoft.Network/networkInterfaces/tsfansibleagentpoc266", 
-        "os_disk": {
-          "name": "TsfAnsibleAgentPoc_OsDisk_1_d1050d8acbd044c98e0a1ee8479d9528", 
-          "operating_system_type": "Linux"
-        }, 
-        "plan": null, 
-        "powerstate": "running", 
-        "private_ip": "10.1.4.4", 
-        "private_ip_alloc_method": "Dynamic", 
-        "provisioning_state": "Succeeded", 
-        "public_ip": "52.174.161.79", 
-        "public_ip_alloc_method": "Static", 
-        "public_ip_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-ansibleagent-poc-rg/providers/Microsoft.Network/publicIPAddresses/TsfAnsibleAgentPoc-ip", 
-        "public_ip_name": "TsfAnsibleAgentPoc-ip", 
-        "resource_group": "tsf-ansibleagent-poc-rg", 
-        "security_group": "TsfAnsibleAgentPoc-nsg", 
-        "security_group_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-ansibleagent-poc-rg/providers/Microsoft.Network/networkSecurityGroups/TsfAnsibleAgentPoc-nsg", 
-        "tags": null, 
-        "type": "Microsoft.Compute/virtualMachines", 
-        "virtual_machine_size": "Standard_B2ms"
-      }, 
-      "TsfAnsibleTowerPoc": {
-        "ansible_host": "13.95.124.81", 
-        "computer_name": "TsfAnsibleTowerPoc", 
-        "enabled": false, 
-        "fqdn": null, 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/TSF-ANSIBLE-POC-RG/providers/Microsoft.Compute/virtualMachines/TsfAnsibleTowerPoc", 
-        "image": {
-          "offer": "UbuntuServer", 
-          "publisher": "Canonical", 
-          "sku": "16.04-LTS", 
-          "version": "latest"
-        }, 
-        "location": "westeurope", 
-        "mac_address": "00-0D-3A-2B-F1-66", 
-        "name": "TsfAnsibleTowerPoc", 
-        "network_interface": "tsfansibletowerpoc406", 
-        "network_interface_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-ansible-poc-rg/providers/Microsoft.Network/networkInterfaces/tsfansibletowerpoc406", 
-        "os_disk": {
-          "name": "TsfAnsibleTowerPoc_OsDisk_1_bf73e9604bcf4b2a834ab11d56ee147b", 
-          "operating_system_type": "Linux"
-        }, 
-        "plan": null, 
-        "powerstate": "running", 
-        "private_ip": "10.1.1.4", 
-        "private_ip_alloc_method": "Dynamic", 
-        "provisioning_state": "Succeeded", 
-        "public_ip": "13.95.124.81", 
-        "public_ip_alloc_method": "Static", 
-        "public_ip_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-ansible-poc-rg/providers/Microsoft.Network/publicIPAddresses/TsfAnsibleTowerPoc-ip", 
-        "public_ip_name": "TsfAnsibleTowerPoc-ip", 
-        "resource_group": "tsf-ansible-poc-rg", 
-        "security_group": "TsfAnsibleTowerPoc-nsg", 
-        "security_group_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-ansible-poc-rg/providers/Microsoft.Network/networkSecurityGroups/TsfAnsibleTowerPoc-nsg", 
-        "tags": null, 
-        "type": "Microsoft.Compute/virtualMachines", 
-        "virtual_machine_size": "Standard_B2ms"
-      }, 
-      "TsfAwxPoc": {
-        "ansible_host": "40.68.241.70", 
-        "computer_name": "TsfAwxPoc", 
-        "enabled": false, 
-        "fqdn": null, 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/TSF-AWX-POC-RG/providers/Microsoft.Compute/virtualMachines/TsfAwxPoc", 
-        "image": {
-          "offer": "UbuntuServer", 
-          "publisher": "Canonical", 
-          "sku": "16.04-LTS", 
-          "version": "latest"
-        }, 
-        "location": "westeurope", 
-        "mac_address": null, 
-        "name": "TsfAwxPoc", 
-        "network_interface": "tsfawxpoc936", 
-        "network_interface_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-awx-poc-rg/providers/Microsoft.Network/networkInterfaces/tsfawxpoc936", 
-        "os_disk": {
-          "name": "TsfAwxPoc_OsDisk_1_36cc1c3a8c5c499e87693a6389b5da89", 
-          "operating_system_type": "Linux"
-        }, 
-        "plan": null, 
-        "powerstate": "deallocated", 
-        "private_ip": "10.1.3.4", 
-        "private_ip_alloc_method": "Dynamic", 
-        "provisioning_state": "Succeeded", 
-        "public_ip": "40.68.241.70", 
-        "public_ip_alloc_method": "Static", 
-        "public_ip_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-awx-poc-rg/providers/Microsoft.Network/publicIPAddresses/TsfAwxPoc-ip", 
-        "public_ip_name": "TsfAwxPoc-ip", 
-        "resource_group": "tsf-awx-poc-rg", 
-        "security_group": "TsfAwxPoc-nsg", 
-        "security_group_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/tsf-awx-poc-rg/providers/Microsoft.Network/networkSecurityGroups/TsfAwxPoc-nsg", 
-        "tags": null, 
-        "type": "Microsoft.Compute/virtualMachines", 
-        "virtual_machine_size": "Standard_B2ms"
-      }, 
-      "amortest": {
-        "ansible_host": null, 
-        "computer_name": "amortest", 
-        "enabled": false, 
-        "fqdn": null, 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/Z-AIM-TRANS-SHRD-DVC-EUW-RGP01/providers/Microsoft.Compute/virtualMachines/amortest", 
-        "image": {
-          "offer": "WindowsServer", 
-          "publisher": "MicrosoftWindowsServer", 
-          "sku": "2012-R2-Datacenter", 
-          "version": "latest"
-        }, 
-        "location": "westeurope", 
-        "mac_address": null, 
-        "name": "amortest", 
-        "network_interface": "amortest248", 
-        "network_interface_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-trans-shrd-dvc-euw-rgp01/providers/Microsoft.Network/networkInterfaces/amortest248", 
-        "os_disk": {
-          "name": "amortest_OsDisk_1_8b010c26fc0b4203b4ac07d21564713b", 
-          "operating_system_type": "Windows"
-        }, 
-        "plan": null, 
-        "powerstate": "deallocated", 
-        "private_ip": "10.63.192.84", 
-        "private_ip_alloc_method": "Dynamic", 
-        "provisioning_state": "Succeeded", 
-        "public_ip": null, 
-        "public_ip_alloc_method": "Dynamic", 
-        "public_ip_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-trans-shrd-dvc-euw-rgp01/providers/Microsoft.Network/publicIPAddresses/amortestip428", 
-        "public_ip_name": "amortestip428", 
-        "resource_group": "z-aim-trans-shrd-dvc-euw-rgp01", 
-        "security_group": "amortestnsg248", 
-        "security_group_id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-trans-shrd-dvc-euw-rgp01/providers/Microsoft.Network/networkSecurityGroups/amortestnsg248", 
-        "tags": null, 
-        "type": "Microsoft.Compute/virtualMachines", 
-        "virtual_machine_size": "Standard_D1_v2", 
-        "windows_auto_updates_enabled": true, 
-        "windows_rm": null, 
-        "windows_timezone": null
-      }, 
-      "z-aim-npo1-wso-dev-ew1-plan": {
-        "enabled": false, 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo1-wso-dev-ew1-plan", 
-        "location": "West Europe", 
-        "name": "z-aim-npo1-wso-dev-ew1-plan", 
-        "powerstate": true, 
-        "provisioning_state": null, 
-        "resource_group": "z-aim-npo1-wso-dev-ew1-rg", 
-        "sku": {
-          "capacity": 1, 
-          "family": "S", 
-          "name": "S1", 
-          "size": "S1", 
-          "tier": "Standard"
-        }, 
-        "tags": {
-          "global:app": "wso", 
-          "global:billing": "XXXXX:XXXXX", 
-          "global:dcs": "FIN", 
-          "global:env": "dev", 
-          "global:lifecycle": "1453739311:15000", 
-          "global:project": "aim", 
-          "global:rev": "1.0.0.1"
-        }, 
-        "type": "app_service_plan"
-      }, 
-      "z-aim-npo1-wso-dev-ew1-redis": {
-        "enable_non_ssl_port": false, 
-        "enabled": false, 
-        "location": "West Europe", 
-        "name": "z-aim-npo1-wso-dev-ew1-redis", 
-        "provisioning_state": "Succeeded", 
-        "resource_group": "z-aim-npo1-wso-dev-ew1-rg", 
-        "sku_capacity": 1, 
-        "sku_family": "P", 
-        "sku_name": "Premium", 
-        "type": "Microsoft.Cache/Redis"
-      }, 
-      "z-aim-npo1-wso-dev-ew1-web": {
-        "enabled": false, 
-        "fqdn": "z-aim-npo1-wso-dev-ew1-web.azurewebsites.net", 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo1-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-npo1-wso-dev-ew1-web", 
-        "location": "West Europe", 
-        "name": "z-aim-npo1-wso-dev-ew1-web", 
-        "plan": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo1-wso-dev-ew1-plan", 
-        "powerstate": true, 
-        "provisioning_state": "Running", 
-        "resource_group": "z-aim-npo1-wso-dev-ew1-rg", 
-        "tags": {
-          "global:app": "wso", 
-          "global:billing": "XXXXX:XXXXX", 
-          "global:dcs": "FIN", 
-          "global:env": "dev", 
-          "global:lifecycle": "1453739311:15000", 
-          "global:project": "aim", 
-          "global:rev": "1.0.0.1"
-        }, 
-        "type": "web_app"
-      }, 
-      "z-aim-npo2-wso-dev-ew1-plan": {
-        "enabled": false, 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo2-wso-dev-ew1-plan", 
-        "location": "West Europe", 
-        "name": "z-aim-npo2-wso-dev-ew1-plan", 
-        "powerstate": true, 
-        "provisioning_state": null, 
-        "resource_group": "z-aim-npo2-wso-dev-ew1-rg", 
-        "sku": {
-          "capacity": 1, 
-          "family": "S", 
-          "name": "S1", 
-          "size": "S1", 
-          "tier": "Standard"
-        }, 
-        "tags": {
-          "global:app": "wso", 
-          "global:billing": "XXXXX:XXXXX", 
-          "global:dcs": "FIN", 
-          "global:env": "dev", 
-          "global:lifecycle": "1453739311:15000", 
-          "global:project": "aim", 
-          "global:rev": "1.0.0.1"
-        }, 
-        "type": "app_service_plan"
-      }, 
-      "z-aim-npo2-wso-dev-ew1-redis": {
-        "enable_non_ssl_port": false, 
-        "enabled": false, 
-        "location": "West Europe", 
-        "name": "z-aim-npo2-wso-dev-ew1-redis", 
-        "provisioning_state": "Succeeded", 
-        "resource_group": "z-aim-npo2-wso-dev-ew1-rg", 
-        "sku_capacity": 1, 
-        "sku_family": "P", 
-        "sku_name": "Premium", 
-        "type": "Microsoft.Cache/Redis"
-      }, 
-      "z-aim-npo2-wso-dev-ew1-web": {
-        "enabled": false, 
-        "fqdn": "z-aim-npo2-wso-dev-ew1-web.azurewebsites.net", 
-        "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-npo2-wso-dev-ew1-web", 
-        "location": "West Europe", 
-        "name": "z-aim-npo2-wso-dev-ew1-web", 
-        "plan": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo2-wso-dev-ew1-plan", 
-        "powerstate": true, 
-        "provisioning_state": "Running", 
-        "resource_group": "z-aim-npo2-wso-dev-ew1-rg", 
-        "tags": {
-          "global:app": "wso", 
-          "global:billing": "XXXXX:XXXXX", 
-          "global:dcs": "FIN", 
-          "global:env": "dev", 
-          "global:lifecycle": "1453739311:15000", 
-          "global:project": "aim", 
-          "global:rev": "1.0.0.1"
-        }, 
-        "type": "web_app"
-      }, 
       "z-aim-pmo1-wso-dev-ew1-plan": {
         "enabled": false, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-pmo1-wso-dev-ew1-plan", 
@@ -386,89 +77,31 @@
       }
     }
   }, 
-  "aim": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
+  "aim": [ 
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
-  "amortestnsg248": [
-    "amortest"
-  ], 
-  "app_service_plan": [
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
+  "app_service_plan": [ 
     "z-aim-pmo1-wso-dev-ew1-plan"
   ], 
   "azure": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan", 
-    "TsfAnsibleTowerPoc", 
-    "TsfAnsibleAgentPoc", 
-    "TsfAwxPoc", 
-    "amortest", 
-    "z-aim-npo1-wso-dev-ew1-redis", 
-    "z-aim-pmo1-wso-dev-ew1-redis", 
-    "z-aim-npo2-wso-dev-ew1-redis"
-  ], 
-  "dev": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
-  ], 
-  "tsf-ansible-poc-rg": [
-    "TsfAnsibleTowerPoc"
-  ], 
-  "tsf-ansibleagent-poc-rg": [
-    "TsfAnsibleAgentPoc"
-  ], 
-  "tsf-awx-poc-rg": [
-    "TsfAwxPoc"
-  ], 
-  "web_app": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web"
-  ], 
-  "westeurope": [
-    "TsfAnsibleTowerPoc", 
-    "TsfAnsibleAgentPoc", 
-    "TsfAwxPoc", 
-    "amortest"
-  ], 
-  "wso": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-pmo1-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-pmo1-wso-dev-ew1-plan"
-  ], 
-  "z-aim-npo1-wso-dev-ew1-rg": [
-    "z-aim-npo1-wso-dev-ew1-web", 
-    "z-aim-npo1-wso-dev-ew1-plan", 
-    "z-aim-npo1-wso-dev-ew1-redis"
-  ], 
-  "z-aim-npo2-wso-dev-ew1-rg": [
-    "z-aim-npo2-wso-dev-ew1-web", 
-    "z-aim-npo2-wso-dev-ew1-plan", 
-    "z-aim-npo2-wso-dev-ew1-redis"
-  ], 
-  "z-aim-pmo1-wso-dev-ew1-rg": [
     "z-aim-pmo1-wso-dev-ew1-web", 
     "z-aim-pmo1-wso-dev-ew1-plan", 
     "z-aim-pmo1-wso-dev-ew1-redis"
   ], 
-  "z-aim-trans-shrd-dvc-euw-rgp01": [
-    "amortest"
+  "dev": [
+    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-plan"
+  ], 
+  "web_app": [
+    "z-aim-pmo1-wso-dev-ew1-web"
+  ], 
+  "wso": [
+    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-plan"
+  ],  
+  "z-aim-pmo1-wso-dev-ew1-rg": [
+    "z-aim-pmo1-wso-dev-ew1-web", 
+    "z-aim-pmo1-wso-dev-ew1-plan", 
+    "z-aim-pmo1-wso-dev-ew1-redis"
   ]
 }
