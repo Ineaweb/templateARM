@@ -1,0 +1,16 @@
+- name: The inventory script
+  hosts: ansible
+  gather_facts: true
+  tasks:
+    - name: Fetch Repository (Git)
+      shell: git fetch  
+      args:
+        chdir: ~/templateARM/inventory
+    - name: Pull Repository (Git)
+      shell: git pull
+      args:
+        chdir: ~/templateARM/inventory      
+    - name: Import azure inventory
+      shell: awx-manage inventory_import --custom --source=UpdateInventory.py --inventory-name={{ inventory_name }} --overwrite --overwrite-vars --enabled-var=enabled --enabled-value=true
+      args:
+        chdir: ~/templateARM/inventory 
