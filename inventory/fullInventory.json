@@ -59,6 +59,7 @@
       "TsfAnsibleAgentPoc": {
         "ansible_host": "52.174.161.79", 
         "computer_name": "TsfAnsibleAgentPoc", 
+        "enabled": false, 
         "fqdn": null, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/TSF-ANSIBLEAGENT-POC-RG/providers/Microsoft.Compute/virtualMachines/TsfAnsibleAgentPoc", 
         "image": {
@@ -95,6 +96,7 @@
       "TsfAnsibleTowerPoc": {
         "ansible_host": "13.95.124.81", 
         "computer_name": "TsfAnsibleTowerPoc", 
+        "enabled": false, 
         "fqdn": null, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/TSF-ANSIBLE-POC-RG/providers/Microsoft.Compute/virtualMachines/TsfAnsibleTowerPoc", 
         "image": {
@@ -131,6 +133,7 @@
       "TsfAwxPoc": {
         "ansible_host": "40.68.241.70", 
         "computer_name": "TsfAwxPoc", 
+        "enabled": false, 
         "fqdn": null, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/TSF-AWX-POC-RG/providers/Microsoft.Compute/virtualMachines/TsfAwxPoc", 
         "image": {
@@ -167,6 +170,7 @@
       "amortest": {
         "ansible_host": null, 
         "computer_name": "amortest", 
+        "enabled": false, 
         "fqdn": null, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/Z-AIM-TRANS-SHRD-DVC-EUW-RGP01/providers/Microsoft.Compute/virtualMachines/amortest", 
         "image": {
@@ -204,24 +208,12 @@
         "windows_timezone": null
       }, 
       "z-aim-npo1-wso-dev-ew1-plan": {
-        "ansible_host": null, 
-        "computer_name": null, 
-        "fqdn": null, 
+        "enabled": false, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo1-wso-dev-ew1-plan", 
         "location": "West Europe", 
-        "mac_address": null, 
         "name": "z-aim-npo1-wso-dev-ew1-plan", 
-        "network_interface": null, 
-        "network_interface_id": null, 
-        "plan": null, 
         "powerstate": true, 
-        "private_ip": null, 
-        "private_ip_alloc_method": null, 
         "provisioning_state": null, 
-        "public_ip": null, 
-        "public_ip_alloc_method": null, 
-        "public_ip_id": null, 
-        "public_ip_name": null, 
         "resource_group": "z-aim-npo1-wso-dev-ew1-rg", 
         "sku": {
           "capacity": 1, 
@@ -239,11 +231,11 @@
           "global:project": "aim", 
           "global:rev": "1.0.0.1"
         }, 
-        "type": "app_service_plan", 
-        "virtual_machine_size": null
+        "type": "app_service_plan"
       }, 
       "z-aim-npo1-wso-dev-ew1-redis": {
         "enable_non_ssl_port": false, 
+        "enabled": false, 
         "location": "West Europe", 
         "name": "z-aim-npo1-wso-dev-ew1-redis", 
         "provisioning_state": "Succeeded", 
@@ -254,24 +246,14 @@
         "type": "Microsoft.Cache/Redis"
       }, 
       "z-aim-npo1-wso-dev-ew1-web": {
-        "ansible_host": null, 
-        "computer_name": null, 
+        "enabled": false, 
         "fqdn": "z-aim-npo1-wso-dev-ew1-web.azurewebsites.net", 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo1-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-npo1-wso-dev-ew1-web", 
         "location": "West Europe", 
-        "mac_address": null, 
         "name": "z-aim-npo1-wso-dev-ew1-web", 
-        "network_interface": null, 
-        "network_interface_id": null, 
         "plan": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo1-wso-dev-ew1-plan", 
         "powerstate": true, 
-        "private_ip": null, 
-        "private_ip_alloc_method": null, 
         "provisioning_state": "Running", 
-        "public_ip": null, 
-        "public_ip_alloc_method": null, 
-        "public_ip_id": null, 
-        "public_ip_name": null, 
         "resource_group": "z-aim-npo1-wso-dev-ew1-rg", 
         "tags": {
           "global:app": "wso", 
@@ -282,28 +264,15 @@
           "global:project": "aim", 
           "global:rev": "1.0.0.1"
         }, 
-        "type": "web_app", 
-        "virtual_machine_size": null
+        "type": "web_app"
       }, 
       "z-aim-npo2-wso-dev-ew1-plan": {
-        "ansible_host": null, 
-        "computer_name": null, 
-        "fqdn": null, 
+        "enabled": false, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo2-wso-dev-ew1-plan", 
         "location": "West Europe", 
-        "mac_address": null, 
         "name": "z-aim-npo2-wso-dev-ew1-plan", 
-        "network_interface": null, 
-        "network_interface_id": null, 
-        "plan": null, 
         "powerstate": true, 
-        "private_ip": null, 
-        "private_ip_alloc_method": null, 
         "provisioning_state": null, 
-        "public_ip": null, 
-        "public_ip_alloc_method": null, 
-        "public_ip_id": null, 
-        "public_ip_name": null, 
         "resource_group": "z-aim-npo2-wso-dev-ew1-rg", 
         "sku": {
           "capacity": 1, 
@@ -321,11 +290,11 @@
           "global:project": "aim", 
           "global:rev": "1.0.0.1"
         }, 
-        "type": "app_service_plan", 
-        "virtual_machine_size": null
+        "type": "app_service_plan"
       }, 
       "z-aim-npo2-wso-dev-ew1-redis": {
         "enable_non_ssl_port": false, 
+        "enabled": false, 
         "location": "West Europe", 
         "name": "z-aim-npo2-wso-dev-ew1-redis", 
         "provisioning_state": "Succeeded", 
@@ -336,24 +305,14 @@
         "type": "Microsoft.Cache/Redis"
       }, 
       "z-aim-npo2-wso-dev-ew1-web": {
-        "ansible_host": null, 
-        "computer_name": null, 
+        "enabled": false, 
         "fqdn": "z-aim-npo2-wso-dev-ew1-web.azurewebsites.net", 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-npo2-wso-dev-ew1-web", 
         "location": "West Europe", 
-        "mac_address": null, 
         "name": "z-aim-npo2-wso-dev-ew1-web", 
-        "network_interface": null, 
-        "network_interface_id": null, 
         "plan": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-npo2-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-npo2-wso-dev-ew1-plan", 
         "powerstate": true, 
-        "private_ip": null, 
-        "private_ip_alloc_method": null, 
         "provisioning_state": "Running", 
-        "public_ip": null, 
-        "public_ip_alloc_method": null, 
-        "public_ip_id": null, 
-        "public_ip_name": null, 
         "resource_group": "z-aim-npo2-wso-dev-ew1-rg", 
         "tags": {
           "global:app": "wso", 
@@ -364,28 +323,15 @@
           "global:project": "aim", 
           "global:rev": "1.0.0.1"
         }, 
-        "type": "web_app", 
-        "virtual_machine_size": null
+        "type": "web_app"
       }, 
       "z-aim-pmo1-wso-dev-ew1-plan": {
-        "ansible_host": null, 
-        "computer_name": null, 
-        "fqdn": null, 
+        "enabled": false, 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-pmo1-wso-dev-ew1-plan", 
         "location": "West Europe", 
-        "mac_address": null, 
         "name": "z-aim-pmo1-wso-dev-ew1-plan", 
-        "network_interface": null, 
-        "network_interface_id": null, 
-        "plan": null, 
         "powerstate": true, 
-        "private_ip": null, 
-        "private_ip_alloc_method": null, 
         "provisioning_state": null, 
-        "public_ip": null, 
-        "public_ip_alloc_method": null, 
-        "public_ip_id": null, 
-        "public_ip_name": null, 
         "resource_group": "z-aim-pmo1-wso-dev-ew1-rg", 
         "sku": {
           "capacity": 1, 
@@ -403,11 +349,11 @@
           "global:project": "aim", 
           "global:rev": "1.0.0.1"
         }, 
-        "type": "app_service_plan", 
-        "virtual_machine_size": null
+        "type": "app_service_plan"
       }, 
       "z-aim-pmo1-wso-dev-ew1-redis": {
         "enable_non_ssl_port": false, 
+        "enabled": false, 
         "location": "West Europe", 
         "name": "z-aim-pmo1-wso-dev-ew1-redis", 
         "provisioning_state": "Succeeded", 
@@ -418,24 +364,14 @@
         "type": "Microsoft.Cache/Redis"
       }, 
       "z-aim-pmo1-wso-dev-ew1-web": {
-        "ansible_host": null, 
-        "computer_name": null, 
+        "enabled": false, 
         "fqdn": "z-aim-pmo1-wso-dev-ew1-web.azurewebsites.net", 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo1-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-pmo1-wso-dev-ew1-web", 
         "location": "West Europe", 
-        "mac_address": null, 
         "name": "z-aim-pmo1-wso-dev-ew1-web", 
-        "network_interface": null, 
-        "network_interface_id": null, 
         "plan": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-pmo1-wso-dev-ew1-plan", 
         "powerstate": true, 
-        "private_ip": null, 
-        "private_ip_alloc_method": null, 
         "provisioning_state": "Running", 
-        "public_ip": null, 
-        "public_ip_alloc_method": null, 
-        "public_ip_id": null, 
-        "public_ip_name": null, 
         "resource_group": "z-aim-pmo1-wso-dev-ew1-rg", 
         "tags": {
           "global:app": "wso", 
@@ -446,8 +382,7 @@
           "global:project": "aim", 
           "global:rev": "1.0.0.1"
         }, 
-        "type": "web_app", 
-        "virtual_machine_size": null
+        "type": "web_app"
       }
     }
   }, 
