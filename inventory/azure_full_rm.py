@@ -468,7 +468,8 @@ class AzureInventory(object):
                 sku_name = redis.sku.name,
                 sku_family = redis.sku.family,
                 sku_capacity = redis.sku.capacity,
-                provisioning_state = redis.provisioning_state                
+                provisioning_state = redis.provisioning_state,
+                enabled = False                
             )
 
             self._add_redis(redis_vars)
@@ -507,6 +508,7 @@ class AzureInventory(object):
                 virtual_machine_size=machine.hardware_profile.vm_size,
                 computer_name=(machine.os_profile.computer_name if machine.os_profile else None),
                 provisioning_state=machine.provisioning_state,
+                enabled = False  
             )
 
             host_vars['os_disk'] = dict(
@@ -582,27 +584,16 @@ class AzureInventory(object):
                 self._get_security_groups(resource_group)
 
             host_vars = dict(
-                ansible_host=None,
-                private_ip=None,
-                private_ip_alloc_method=None,
-                public_ip=None,
-                public_ip_name=None,
-                public_ip_id=None,
-                public_ip_alloc_method=None,
                 fqdn=webapp.default_host_name,
                 location=webapp.location,
                 name=webapp.name,
                 type=webapp.type,
                 id=webapp.id,
                 tags=webapp.tags,
-                network_interface_id=None,
-                network_interface=None,
                 resource_group=resource_group,
-                mac_address=None,
                 plan=webapp.server_farm_id,
-                virtual_machine_size=None,
-                computer_name=None,
                 provisioning_state=webapp.state,
+                enabled = False
             )
 
             if self.include_powerstate:
@@ -622,27 +613,14 @@ class AzureInventory(object):
                 self._get_security_groups(resource_group)
 
             host_vars = dict(
-                ansible_host=None,
-                private_ip=None,
-                private_ip_alloc_method=None,
-                public_ip=None,
-                public_ip_name=None,
-                public_ip_id=None,
-                public_ip_alloc_method=None,
-                fqdn=None,
                 location=plan.location,
                 name=plan.name,
                 type=plan.type,
                 id=plan.id,
                 tags=plan.tags,
-                network_interface_id=None,
-                network_interface=None,
                 resource_group=resource_group,
-                mac_address=None,
-                plan=None,
-                virtual_machine_size=None,
-                computer_name=None,
-                provisioning_state=plan.provisioning_state
+                provisioning_state=plan.provisioning_state,
+                enabled = False
             )
 
             host_vars['sku'] = dict(
