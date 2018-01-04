@@ -17,7 +17,7 @@
   "_meta": {
     "hostvars": {
       "z-aim-pmo1-wso-dev-ew1-plan": {
-        "enabled": "False", 
+        "enabled": false,
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo1-wso-dev-ew1-rg/providers/Microsoft.Web/serverfarms/z-aim-pmo1-wso-dev-ew1-plan", 
         "location": "West Europe", 
         "name": "z-aim-pmo1-wso-dev-ew1-plan", 
@@ -44,7 +44,7 @@
       }, 
       "z-aim-pmo1-wso-dev-ew1-redis": {
         "enable_non_ssl_port": false, 
-        "enabled": "False", 
+        "enabled": false,
         "location": "West Europe", 
         "name": "z-aim-pmo1-wso-dev-ew1-redis", 
         "provisioning_state": "Succeeded", 
@@ -55,7 +55,7 @@
         "type": "Microsoft.Cache/Redis"
       }, 
       "z-aim-pmo1-wso-dev-ew1-web": {
-        "enabled": "False", 
+        "enabled": false,
         "fqdn": "z-aim-pmo1-wso-dev-ew1-web.azurewebsites.net", 
         "id": "/subscriptions/c8da9810-2e85-4a8a-b614-fe0695ec0371/resourceGroups/z-aim-pmo1-wso-dev-ew1-rg/providers/Microsoft.Web/sites/z-aim-pmo1-wso-dev-ew1-web", 
         "location": "West Europe", 
