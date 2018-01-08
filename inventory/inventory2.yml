@@ -1,5 +1,5 @@
 - name: The inventory script
-  hosts: ansible
+  hosts: ansible-local
   gather_facts: true
   tasks:      
     - name: Import azure inventory
