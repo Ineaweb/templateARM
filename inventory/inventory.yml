@@ -3,9 +3,9 @@
   gather_facts: true
   tasks:
     - name: Fetch Repository (Git)
-      shell: git fetch  
+      shell: git fetch
       args:
-        chdir: ~/templateARM/inventory
+        chdir: ~/templateARM/inventory   
     - name: Pull Repository (Git)
       shell: git pull
       args:
@@ -16,9 +16,11 @@
         chdir: ~/templateARM/inventory
     - name: Commit Repository (Git)
       shell: git commit -a -m 'Update Inventory {{ ansible_date_time.iso8601 }}'
+      ignore_errors: True
       args:
         chdir: ~/templateARM/inventory      
     - name: Push Repository (Git)
       shell: git push
+      ignore_errors: True
       args:
         chdir: ~/templateARM/inventory      
